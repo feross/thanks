@@ -18,6 +18,7 @@
     "pify": "^3.0.0",
     "pkg-dir": "^2.0.0",
     "read-package-tree": "^5.1.6",
+    "registry-auth-token": "^3.3.2",
     "registry-url": "^3.1.0",
     "strip-ansi": "^4.0.0",
     "text-table": "^0.2.0"

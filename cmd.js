@@ -7,6 +7,7 @@ const pkgDir = require('pkg-dir')
 const readPackageTree = require('read-package-tree')
 const RegistryClient = require('npm-registry-client') // TODO: use npm-registry-fetch
 const registryUrl = require('registry-url')
+const registryAuthToken = require('registry-auth-token')
 const stripAnsi = require('strip-ansi')
 const textTable = require('text-table')
 
@@ -90,7 +91,8 @@ async function init () {
 
     const opts = {
       timeout: 30 * 1000,
-      staleOk: true
+      staleOk: true,
+      auth: registryAuthToken()
     }
     return client.getAsync(url, opts)
   }
