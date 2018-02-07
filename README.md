@@ -8,3 +8,6 @@
 npx thanks
 ```
 
+## license
+
+MIT. Copyright (c) [Feross Aboukhadijeh](https://feross.org).
