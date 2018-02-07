@@ -46,6 +46,7 @@ const packages = {
   'redux-devtools-extension': 'https://opencollective.com/redux-devtools-extension',
   rollup: 'https://opencollective.com/rollup',
   'socket.io': 'https://opencollective.com/socketio',
+  'styled-components': 'https://opencollective.com/styled-components',
   tachyons: 'https://opencollective.com/tachyons',
   webpack: 'https://opencollective.com/webpack',
   yo: 'https://opencollective.com/yeoman'
