@@ -1,53 +1,55 @@
 #!/usr/bin/env node
 
 const chalk = require('chalk')
+const got = require('got') // TODO: use simple-peer when it supports promises
 const minimist = require('minimist')
 const pify = require('pify')
 const pkgDir = require('pkg-dir')
 const readPackageTree = require('read-package-tree')
-const RegistryClient = require('npm-registry-client') // TODO: use npm-registry-fetch
+const RegistryClient = require('npm-registry-client') // TODO: use npm-registry-fetch when done
 const registryUrl = require('registry-url')
 const stripAnsi = require('strip-ansi')
 const textTable = require('text-table')
 
-const donees = require('./')
+const thanks = require('./')
+
+const DOWNLOADS_URL = 'https://api.npmjs.org/downloads/point/last-month/'
+const DOWNLOADS_URL_LIMIT = 128
 
 const readPackageTreeAsync = pify(readPackageTree)
 
 init().catch(handleError)
 
 async function init () {
-  const argv = minimist(process.argv.slice(2))
-
-  const cwd = argv._[0] || process.cwd()
-
-  const authors = {}
   const client = createRegistryClient()
+
+  const argv = minimist(process.argv.slice(2))
+  const cwd = argv._[0] || process.cwd()
 
   // Get all packages in the nearest `node_modules` folder
   const rootPath = await pkgDir(cwd)
   const packageTree = await readPackageTreeAsync(rootPath)
-  const pkgNames = packageTree.children.map(node => node.package.name)
 
   // Get latest registry data on each local package, since the local data does
   // not include the list of maintainers
-  const pkgs = await Promise.all(pkgNames.map(fetchPkg))
+  const pkgNames = packageTree.children.map(node => node.package.name)
+  const allPkgs = await Promise.all(pkgNames.map(fetchPkg))
 
-  pkgs.forEach(pkg => {
-    pkg.maintainers
-      .map(maintainer => maintainer.name)
-      .forEach(author => addPackageAuthor(pkg.name, author))
-  })
+  // Fetch download counts for each package
+  const downloadCounts = await bulkFetchDownloads(pkgNames)
 
-  const rows = Object.keys(authors)
-    .filter(author => donees.authors[author] != null)
-    .sort((author1, author2) => authors[author2].length - authors[author1].length)
+  const authorInfos = computeAuthorInfos(allPkgs, downloadCounts)
+
+  const rows = Object.keys(authorInfos)
+    .filter(author => thanks.authors[author] != null)
+    .sort((author1, author2) => authorInfos[author2].length - authorInfos[author1].length)
     .map(author => {
-      const deps = authors[author]
+      const authorPkgs = authorInfos[author]
+      const donateLink = thanks.authors[author]
       return [
         chalk.green(author),
-        donees.authors[author],
-        `${deps.length} packages including ${deps.slice(0, 3).join(', ')}`
+        donateLink,
+        `${authorPkgs.length} packages including ${authorPkgs.slice(0, 2).join(', ')}`
       ]
     })
 
@@ -58,33 +60,15 @@ async function init () {
   ])
 
   const tableOpts = {
-    // align: ['l', 'l', 'l'],
     stringLength: str => stripAnsi(str).length
   }
 
   const table = textTable(rows, tableOpts)
   console.log(table)
 
-  function createRegistryClient () {
-    const opts = {
-      log: {
-        error () {},
-        http () {},
-        info () {},
-        silly () {},
-        verbose () {},
-        warn () {}
-      }
-    }
-    const client = new RegistryClient(opts)
-    client.getAsync = pify(client.get.bind(client))
-    return client
-  }
-
   async function fetchPkg (pkgName) {
     // The registry does not support fetching versions for scoped packages
-    const isScopedPackage = pkgName.includes('/')
-    const url = isScopedPackage
+    const url = isScopedPkg(pkgName)
       ? `${registryUrl()}${pkgName.replace('/', '%2F')}`
       : `${registryUrl()}${pkgName}/latest`
 
@@ -94,46 +78,78 @@ async function init () {
     }
     return client.getAsync(url, opts)
   }
-
-  function addPackageAuthor (pkgName, author) {
-    if (authors[author] == null) authors[author] = []
-    authors[author].push(pkgName)
-  }
-
-  // const rootPkg = await fetchLocalPkg()
-
-  // const rootDeps = [].concat(
-  //   findDeps(rootPkg, 'dependencies'),
-  //   findDeps(rootPkg, 'devDependencies'),
-  //   findDeps(rootPkg, 'optionalDependencies')
-  // )
-
-  // const queue = [].push(...rootDeps)
-
-  // while (queue.length > 0) {
-  //   const pkgs = await Promise.all(queue.slice(0, CONCURRENCY).map(fetchPkg))
-  // }
 }
 
-// async function fetchLocalPkg () {
-//   const pkgPath = await pkgUp()
-//   const pkgStr = await readFileAsync(pkgPath, 'utf8')
+function createRegistryClient () {
+  const opts = {
+    log: {
+      error () {},
+      http () {},
+      info () {},
+      silly () {},
+      verbose () {},
+      warn () {}
+    }
+  }
+  const client = new RegistryClient(opts)
+  client.getAsync = pify(client.get.bind(client))
+  return client
+}
 
-//   try {
-//     const pkg = JSON.parse(pkgStr)
-//     normalizePackage(pkg)
-//     return pkg
-//   } catch (err) {
-//     err.message = `Failed to parse package.json: ${err.message}`
-//     throw err
-//   }
-// }
+function isScopedPkg (pkgName) {
+  return pkgName.includes('/')
+}
 
-// function findDeps (pkg, type) {
-//   return pkg[type] && typeof pkg[type] === 'object'
-//     ? Object.keys(pkg[type])
-//     : []
-// }
+/**
+ * A few notes:
+ *   - bulk queries do not support scoped packages
+ *   - bulk queries are limited to at most 128 packages at a time
+ */
+async function bulkFetchDownloads (pkgNames) {
+  const downloads = {}
+
+  const normalPkgNames = pkgNames.filter(pkgName => !isScopedPkg(pkgName))
+  const scopedPkgNames = pkgNames.filter(isScopedPkg)
+
+  for (let start = 0; start < normalPkgNames.length; start += DOWNLOADS_URL_LIMIT) {
+    const pkgNamesSubset = normalPkgNames.slice(start, start + DOWNLOADS_URL_LIMIT)
+    const url = DOWNLOADS_URL + pkgNamesSubset.join(',')
+    const res = await got(url, { json: true })
+    Object.keys(res.body).forEach(pkgName => {
+      downloads[pkgName] = res.body[pkgName].downloads
+    })
+  }
+
+  await Promise.all(scopedPkgNames.map(async scopedPkgName => {
+    const url = DOWNLOADS_URL + scopedPkgName
+    const res = await got(url, { json: true })
+    downloads[scopedPkgName] = res.body.downloads
+  }))
+
+  return downloads
+}
+
+function computeAuthorInfos (pkgs, downloadCounts) {
+  // author name -> array of package names
+  const authorInfos = {}
+
+  pkgs.forEach(pkg => {
+    pkg.maintainers
+      .map(maintainer => maintainer.name)
+      .forEach(author => {
+        if (authorInfos[author] == null) authorInfos[author] = []
+        authorInfos[author].push(pkg.name)
+      })
+  })
+
+  // Sort each author's package list by download count
+  Object.keys(authorInfos).forEach(author => {
+    const pkgs = authorInfos[author]
+    pkgs.sort((pkg1, pkg2) => downloadCounts[pkg2] - downloadCounts[pkg1])
+  })
+
+  return authorInfos
+}
 
 function handleError (err) {
   console.error(`thanks: Error: ${err.message}`)
