@@ -1,0 +1,51 @@
+{
+  "name": "thanks",
+  "description": "Give thanks to the open source maintainers you depend on!",
+  "version": "0.0.0",
+  "author": {
+    "name": "Feross Aboukhadijeh",
+    "email": "feross@feross.org",
+    "url": "https://feross.org"
+  },
+  "bin": "cmd.js",
+  "bugs": {
+    "url": "https://github.com/feross/thanks/issues"
+  },
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "minimist": "^1.2.0",
+    "npm-registry-client": "^8.5.0",
+    "pify": "^3.0.0",
+    "pkg-dir": "^2.0.0",
+    "read-package-tree": "^5.1.6",
+    "registry-url": "^3.1.0",
+    "strip-ansi": "^4.0.0",
+    "text-table": "^0.2.0"
+  },
+  "devDependencies": {
+    "standard": "*"
+  },
+  "keywords": [
+    "thanks",
+    "open source",
+    "sustainability",
+    "donate",
+    "support",
+    "funding",
+    "patreon",
+    "donor",
+    "thank you",
+    "fund",
+    "sustain",
+    "earn"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/feross/thanks.git"
+  },
+  "scripts": {
+    "test": "standard"
+  }
+}
