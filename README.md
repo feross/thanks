@@ -11,10 +11,25 @@
 
 ### 🙌 Give thanks to the open source maintainers you depend on! ✨
 
+## example
+
+![example gif](img/example.gif)
+
 ## usage
+
+Use `thanks` to see which packages you depend on have maintainers who are **seeking donations**.
+
+To run:
 
 ```js
 npx thanks
+```
+
+Or, to install and run:
+
+```js
+npm install -g thanks
+thanks
 ```
 
 ## license
