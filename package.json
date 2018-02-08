@@ -1,7 +1,7 @@
 {
   "name": "thanks",
   "description": "Give thanks to the open source maintainers you depend on!",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": {
     "name": "Feross Aboukhadijeh",
     "email": "feross@feross.org",
