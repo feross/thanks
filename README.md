@@ -11,26 +11,33 @@
 
 ### 🙌 Give thanks to the open source maintainers you depend on! ✨
 
-## example
-
 ![example gif](img/example.gif)
+
+> "Put your money where your love is."
+> – The Grateful Dead
+
+Open source maintainers do the work that makes our awesome apps, websites, and projects possible! Many authors devote countless hours to open source. Let's help out authors and make the software we rely on healthier at the same time!
 
 ## usage
 
-Use `thanks` to see which packages you depend on have maintainers who are **seeking donations**.
+**Use `thanks` to see which packages you depend on have maintainers seeking donations ✨**
 
-To run:
+Run it instantly (without installing!) using:
 
 ```js
 npx thanks
 ```
 
-Or, to install and run:
+Or, install it, then run it:
 
 ```js
 npm install -g thanks
 thanks
 ```
+
+## authors, add yourself to the list!
+
+If you're an open source author who accepts donations, add yourself to the `thanks` CLI by modifying [index.js](https://github.com/feross/thanks/blob/master/index.js), and sending a pull request!
 
 ## license
 
