@@ -239,6 +239,13 @@ function computeAuthorsPkgNames (pkgs, pkgDownloads, directPkgNames) {
   const authorPkgNames = {}
 
   pkgs.forEach(pkg => {
+    if (!pkg.maintainers) {
+      // Ignore packages that are missing a "maintainers" field (e.g.
+      // http://registry.npmjs.com/vargs/latest). This appears to happen on very old
+      // packages. My guess is that the "maintainers" field only started getting
+      // added to release metadata recently.
+      return
+    }
     pkg.maintainers
       .map(maintainer => maintainer.name)
       .forEach(author => {
