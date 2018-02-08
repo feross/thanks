@@ -11,6 +11,7 @@ const readPackageTree = require('read-package-tree')
 const RegistryClient = require('npm-registry-client') // TODO: use npm-registry-fetch when done
 const registryUrl = require('registry-url')
 const stripAnsi = require('strip-ansi')
+const termSize = require('term-size')
 const textTable = require('text-table')
 const { promisify } = require('util')
 
@@ -67,6 +68,7 @@ async function init () {
   const authorInfos = computeAuthorInfos(allPkgs, downloadCounts)
 
   // TODO: compute list of **projects** seeking donations
+  // TODO: show direct dependencies first in the list
 
   const donateLinks = []
 
@@ -77,10 +79,11 @@ async function init () {
       const authorPkgs = authorInfos[author]
       const donateLink = thanks.authors[author]
       donateLinks.push(donateLink)
+      const prettyDonateLink = donateLink.replace(/https?:\/\/(www\.)?/, '')
       return [
         chalk.green(author),
-        donateLink,
-        `${authorPkgs.length} packages including ${authorPkgs.slice(0, 2).join(', ')}`
+        chalk.cyan(prettyDonateLink),
+        listWithMaxLen(authorPkgs, termSize().columns - 45)
       ]
     })
 
@@ -121,7 +124,7 @@ async function init () {
   }
 
   async function fetchPkg (pkgName) {
-    // The registry does not support fetching versions for scoped packages
+    // Note: The registry does not support fetching versions for scoped packages
     const url = isScopedPkg(pkgName)
       ? `${registryUrl()}${pkgName.replace('/', '%2F')}`
       : `${registryUrl()}${pkgName}/latest`
@@ -154,12 +157,10 @@ function isScopedPkg (pkgName) {
   return pkgName.includes('/')
 }
 
-/**
- * A few notes:
- *   - bulk queries do not support scoped packages
- *   - bulk queries are limited to at most 128 packages at a time
- */
 async function bulkFetchDownloads (pkgNames) {
+  // A few notes:
+  //   - bulk queries do not support scoped packages
+  //   - bulk queries are limited to at most 128 packages at a time
   const downloads = {}
 
   const normalPkgNames = pkgNames.filter(pkgName => !isScopedPkg(pkgName))
@@ -203,4 +204,19 @@ function computeAuthorInfos (pkgs, downloadCounts) {
   })
 
   return authorInfos
+}
+
+function listWithMaxLen (list, maxLen) {
+  const ELLIPSIS = chalk` {magenta + XX more}`
+  const ELLIPSIS_LENGTH = stripAnsi(ELLIPSIS).length
+  let str = ''
+  for (let i = 0; i < list.length; i++) {
+    const item = (i === 0 ? '' : ', ') + list[i]
+    if (stripAnsi(str).length + item.length >= maxLen - ELLIPSIS_LENGTH) {
+      str += ELLIPSIS.replace('XX', list.length - i)
+      break
+    }
+    str += item
+  }
+  return str
 }
