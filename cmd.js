@@ -9,6 +9,7 @@ const pify = require('pify')
 const pkgDir = require('pkg-dir')
 const pkgUp = require('pkg-up')
 const readPackageTree = require('read-package-tree')
+const registryAuthToken = require('registry-auth-token')
 const RegistryClient = require('npm-registry-client') // TODO: use npm-registry-fetch when done
 const registryUrl = require('registry-url')
 const setTimeoutAsync = require('timeout-as-promise')
@@ -127,7 +128,8 @@ async function fetchPkg (client, pkgName) {
 
   const opts = {
     timeout: 30 * 1000,
-    staleOk: true
+    staleOk: true,
+    auth: registryAuthToken()
   }
   return client.getAsync(url, opts)
 }
