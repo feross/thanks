@@ -18,9 +18,14 @@
 
 Open source maintainers do the work that makes our awesome apps, websites, and projects possible! Many authors devote countless hours to open source. Let's help out authors and make the software we rely on healthier at the same time!
 
-## usage
+## Usage
 
-**Use `thanks` to see which packages you depend on have maintainers seeking donations ✨**
+It's easy!
+
+1. Run `npx thanks` in your project
+2. See which of your dependencies are seeking donations! 💸
+
+## Install
 
 Run it instantly (without installing!) using:
 
@@ -35,10 +40,12 @@ npm install -g thanks
 thanks
 ```
 
-## authors, add yourself to the list!
+## 🌟 Open source authors, add yourself to the list
 
-If you're an open source author who accepts donations, add yourself to the `thanks` CLI by modifying [index.js](https://github.com/feross/thanks/blob/master/index.js), and sending a pull request!
+If you're an open source author who accepts donations, add yourself to the `thanks` CLI by [modifying this file](https://github.com/feross/thanks/blob/master/index.js), and sending a pull request!
 
-## license
+We're also considering [supporting a new `package.json` field](https://github.com/feross/thanks/issues/2). Please share your thoughts!
+
+## License
 
 MIT. Copyright (c) [Feross Aboukhadijeh](https://feross.org).
