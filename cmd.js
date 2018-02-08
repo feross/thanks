@@ -68,36 +68,60 @@ async function init () {
   spinner.text = chalk`Reading {cyan dependencies} from package tree in {magenta node_modules}...`
   const rootPath = await pkgDir(cwd)
   const packageTree = await readPackageTreeAsync(rootPath)
+  const pkgNames = packageTree.children.map(node => node.package.name)
 
   // Get latest registry data on each local package, since the local data does
   // not include the list of maintainers
   spinner.text = chalk`Fetching package {cyan maintainers} from {red npm}...`
-  const pkgNames = packageTree.children.map(node => node.package.name)
   const allPkgs = await Promise.all(pkgNames.map(pkgName => fetchPkg(client, pkgName)))
 
   spinner.text = chalk`Fetching package {cyan download counts} from {red npm}...`
-  const downloadCounts = await bulkFetchDownloads(pkgNames)
+  const pkgDownloads = await bulkFetchPkgDownloads(pkgNames)
 
   // Author name -> list of packages (sorted by direct dependencies, then download count)
-  const authorsPkgNames = computeAuthorsPkgNames(allPkgs, downloadCounts, directPkgNames)
+  const authorsPkgNames = computeAuthorsPkgNames(allPkgs, pkgDownloads, directPkgNames)
 
-  // Array of author names who are seeking donations
+  // Array of author names who are seeking donations (sorted by download count)
   const authorsSeeking = Object.keys(authorsPkgNames)
     .filter(author => thanks.authors[author] != null)
     .sort((author1, author2) => authorsPkgNames[author2].length - authorsPkgNames[author1].length)
 
-  const donateLinks = authorsSeeking
-    .map(author => thanks.authors[author])
+  // Array of package names that are seeking donations (sorted by download counte)
+  const pkgNamesSeeking = pkgNames
+    .filter(pkgName => thanks.packages[pkgName] != null)
+    .sort((pkg1, pkg2) => pkgDownloads[pkg2] - pkgDownloads[pkg1])
 
-  if (authorsSeeking.length) {
-    spinner.succeed(chalk`You depend on {cyan ${authorsSeeking.length} authors} who are {magenta seeking donations!} ✨\n`)
-    printTable(authorsSeeking, authorsPkgNames, directPkgNames)
-    if (argv.open) openDonateLinks(donateLinks)
+  const donateLinks = [].concat(
+    authorsSeeking.map(author => thanks.authors[author]),
+    pkgNamesSeeking.map(pkgName => thanks.packages[pkgName])
+  )
+
+  const authorStr = chalk.cyan(`${authorsSeeking.length} authors`)
+  const pkgNamesStr = chalk.cyan(`${pkgNamesSeeking.length} teams`)
+
+  if (authorsSeeking.length > 0 && pkgNamesSeeking.length > 0) {
+    spinner.succeed(
+      chalk`You depend on ${authorStr} and ${pkgNamesStr} who are {magenta seeking donations!} ✨\n`
+    )
+  } else if (authorsSeeking.length > 0) {
+    spinner.succeed(
+      chalk`You depend on ${authorStr} who are {magenta seeking donations!} ✨\n`
+    )
+  } else if (pkgNamesSeeking.length > 0) {
+    spinner.succeed(
+      chalk`You depend on ${pkgNamesStr} who are {magenta seeking donations!} ✨\n`
+    )
   } else {
-    spinner.info('You don\'t depend on any packages from maintainers seeking donations')
+    spinner.succeed(
+      chalk`You depend on {cyan no authors} who are seeking donations! 😌`
+    )
   }
 
-  // TODO: compute list of **projects** seeking donations
+  printTable(authorsSeeking, pkgNamesSeeking, authorsPkgNames, directPkgNames)
+
+  if (donateLinks.length && argv.open) {
+    openDonateLinks(donateLinks)
+  }
 }
 
 function createRegistryClient () {
@@ -134,30 +158,43 @@ async function fetchPkg (client, pkgName) {
   return client.getAsync(url, opts)
 }
 
-function printTable (authorsSeeking, authorsPkgNames, directPkgNames) {
-  const rows = authorsSeeking
-    .map(author => {
-      // Highlight direct dependencies in a different color
-      const authorPkgNames = authorsPkgNames[author]
-        .map(pkgName => {
-          return directPkgNames.includes(pkgName)
-            ? chalk.green.bold(pkgName)
-            : pkgName
-        })
+function printTable (authorsSeeking, pkgNamesSeeking, authorsPkgNames, directPkgNames) {
+  // Highlight direct dependencies in a different color
+  function maybeHighlightPkgName (pkgName) {
+    return directPkgNames.includes(pkgName)
+      ? chalk.green.bold(pkgName)
+      : pkgName
+  }
 
-      const donateLink = thanks.authors[author].replace(RE_REMOVE_URL_PREFIX, '')
+  const authorRows = authorsSeeking
+    .map(author => {
+      const authorPkgNames = authorsPkgNames[author].map(maybeHighlightPkgName)
+      const donateLink = prettyUrl(thanks.authors[author])
       return [
         author,
         chalk.cyan(donateLink),
-        listWithMaxLen(authorPkgNames, termSize().columns - 45)
+        listWithMaxLen(authorPkgNames, termSize().columns - 50)
       ]
     })
 
-  rows.unshift([
+  const packageRows = pkgNamesSeeking
+    .map(pkgName => {
+      const donateLink = prettyUrl(thanks.packages[pkgName])
+      return [
+        `${pkgName} (team)`,
+        chalk.cyan(donateLink),
+        maybeHighlightPkgName(pkgName)
+      ]
+    })
+
+  const rows = [[
     chalk.underline('Author'),
     chalk.underline('Where to Donate'),
     chalk.underline('Dependencies')
-  ])
+  ]].concat(
+    authorRows,
+    packageRows
+  )
 
   const opts = {
     stringLength: str => stripAnsi(str).length
@@ -166,11 +203,15 @@ function printTable (authorsSeeking, authorsPkgNames, directPkgNames) {
   console.log(table + '\n')
 }
 
-async function bulkFetchDownloads (pkgNames) {
+function prettyUrl (url) {
+  return url.replace(RE_REMOVE_URL_PREFIX, '')
+}
+
+async function bulkFetchPkgDownloads (pkgNames) {
   // A few notes:
   //   - bulk queries do not support scoped packages
   //   - bulk queries are limited to at most 128 packages at a time
-  const downloads = {}
+  const pkgDownloads = {}
 
   const normalPkgNames = pkgNames.filter(pkgName => !isScopedPkg(pkgName))
   const scopedPkgNames = pkgNames.filter(isScopedPkg)
@@ -180,20 +221,20 @@ async function bulkFetchDownloads (pkgNames) {
     const url = DOWNLOADS_URL + pkgNamesSubset.join(',')
     const res = await got(url, { json: true })
     Object.keys(res.body).forEach(pkgName => {
-      downloads[pkgName] = res.body[pkgName].downloads
+      pkgDownloads[pkgName] = res.body[pkgName].downloads
     })
   }
 
   await Promise.all(scopedPkgNames.map(async scopedPkgName => {
     const url = DOWNLOADS_URL + scopedPkgName
     const res = await got(url, { json: true })
-    downloads[scopedPkgName] = res.body.downloads
+    pkgDownloads[scopedPkgName] = res.body.downloads
   }))
 
-  return downloads
+  return pkgDownloads
 }
 
-function computeAuthorsPkgNames (pkgs, downloadCounts, directPkgNames) {
+function computeAuthorsPkgNames (pkgs, pkgDownloads, directPkgNames) {
   // author name -> array of package names
   const authorPkgNames = {}
 
@@ -214,7 +255,7 @@ function computeAuthorsPkgNames (pkgs, downloadCounts, directPkgNames) {
 
     const pkgNames = authorPkgNames[author]
       .filter(pkgName => !authorDirectPkgNames.includes(pkgName))
-      .sort((pkg1, pkg2) => downloadCounts[pkg2] - downloadCounts[pkg1])
+      .sort((pkg1, pkg2) => pkgDownloads[pkg2] - pkgDownloads[pkg1])
 
     pkgNames.unshift(...authorDirectPkgNames)
 
