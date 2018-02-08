@@ -12,12 +12,12 @@ const readPackageTree = require('read-package-tree')
 const registryAuthToken = require('registry-auth-token')
 const RegistryClient = require('npm-registry-client') // TODO: use npm-registry-fetch when done
 const registryUrl = require('registry-url')
-const setTimeoutAsync = require('timeout-as-promise')
 const stripAnsi = require('strip-ansi')
 const termSize = require('term-size')
 const textTable = require('text-table')
 const { readFile } = require('fs')
 const { stripIndent } = require('common-tags')
+const PromptConfirm = require('prompt-confirm')
 
 const thanks = require('./')
 
@@ -55,13 +55,9 @@ init()
 
 async function init () {
   const argv = minimist(process.argv.slice(2), {
-    boolean: ['open'],
     alias: {
       h: 'help',
       v: 'version'
-    },
-    default: {
-      open: true
     }
   })
   const cwd = argv._[0] || process.cwd()
@@ -97,7 +93,7 @@ function runVersion () {
   console.log(require('./package.json').version)
 }
 
-async function runThanks (cwd, open) {
+async function runThanks (cwd) {
   spinner = ora({
     spinner: HEARTS_SPINNER,
     text: chalk`Getting ready to {cyan give thanks} to {magenta maintainers}...`
@@ -163,8 +159,12 @@ async function runThanks (cwd, open) {
 
   printTable(authorsSeeking, pkgNamesSeeking, authorsPkgNames, directPkgNames)
 
-  if (donateLinks.length && open) {
-    openDonateLinks(donateLinks)
+  if (donateLinks.length) {
+    const prompt = new PromptConfirm(
+      chalk`Want to open these {cyan donate pages} in your {magenta web browser}? 🦄`
+    )
+    const doOpen = await prompt.run()
+    if (doOpen) openDonateLinks(donateLinks)
   }
 }
 
@@ -332,21 +332,10 @@ function listWithMaxLen (list, maxLen) {
 }
 
 async function openDonateLinks (donateLinks) {
-  const len = donateLinks.length
-
-  const spinner = ora({
-    spinner: HEARTS_SPINNER,
-    text: chalk`Opening {cyan ${len} donate pages} in your {magenta web browser}...`
-  })
-  .start()
-
-  await setTimeoutAsync(2000)
-
   for (let donateLink of donateLinks) {
     await opn(donateLink, { wait: false })
   }
-
-  spinner.succeed(chalk`Opened {cyan ${len} donate pages} in your {magenta web browser} 💻`)
+  console.log(chalk`{bold.yellow You are awesome!} 🌟`)
 }
 
 async function readDirectPkgNames () {
