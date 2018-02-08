@@ -19,6 +19,10 @@ const DOWNLOADS_URL_LIMIT = 128
 const readPackageTreeAsync = pify(readPackageTree)
 
 init().catch(handleError)
+const spinner = ora({
+  spinner: 'moon',
+  text: chalk`Getting ready to {cyan give thanks} to {magenta maintainers}...`
+}).start()
 
 async function init () {
   const client = createRegistryClient()
@@ -27,17 +31,21 @@ async function init () {
   const cwd = argv._[0] || process.cwd()
 
   // Get all packages in the nearest `node_modules` folder
+  spinner.text = chalk`Reading {cyan dependencies} from package tree in {magenta node_modules}...`
   const rootPath = await pkgDir(cwd)
   const packageTree = await readPackageTreeAsync(rootPath)
 
   // Get latest registry data on each local package, since the local data does
   // not include the list of maintainers
+  spinner.text = chalk`Fetching package {cyan maintainers} from {red npm}...`
   const pkgNames = packageTree.children.map(node => node.package.name)
   const allPkgs = await Promise.all(pkgNames.map(fetchPkg))
 
   // Fetch download counts for each package
+  spinner.text = chalk`Fetching package {cyan download counts} from {red npm}...`
   const downloadCounts = await bulkFetchDownloads(pkgNames)
 
+  // Author name -> list of packages, ordered by download count
   const authorInfos = computeAuthorInfos(allPkgs, downloadCounts)
 
   const rows = Object.keys(authorInfos)
@@ -59,12 +67,21 @@ async function init () {
     chalk.underline('Dependencies')
   ])
 
-  const tableOpts = {
-    stringLength: str => stripAnsi(str).length
+  if (rows.length) {
+    spinner.succeed(chalk`You depend on {cyan ${rows.length} authors} who are {magenta seeking donations!} ✨\n`)
+    printTable(rows)
+  } else {
+    spinner.succeed('You don\'t depend on any packages from maintainers seeking donations')
   }
 
-  const table = textTable(rows, tableOpts)
-  console.log(table)
+
+  function printTable (rows) {
+    const tableOpts = {
+      stringLength: str => stripAnsi(str).length
+    }
+    const table = textTable(rows, tableOpts)
+    console.log(table + '\n')
+  }
 
   async function fetchPkg (pkgName) {
     // The registry does not support fetching versions for scoped packages

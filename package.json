@@ -16,6 +16,7 @@
     "got": "^8.0.3",
     "minimist": "^1.2.0",
     "npm-registry-client": "^8.5.0",
+    "ora": "^1.4.0",
     "pify": "^3.0.0",
     "pkg-dir": "^2.0.0",
     "read-package-tree": "^5.1.6",
