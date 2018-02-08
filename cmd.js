@@ -7,16 +7,19 @@ const opn = require('opn')
 const ora = require('ora')
 const pify = require('pify')
 const pkgDir = require('pkg-dir')
+const pkgUp = require('pkg-up')
 const readPackageTree = require('read-package-tree')
 const RegistryClient = require('npm-registry-client') // TODO: use npm-registry-fetch when done
 const registryUrl = require('registry-url')
+const setTimeoutAsync = require('timeout-as-promise')
 const stripAnsi = require('strip-ansi')
 const termSize = require('term-size')
 const textTable = require('text-table')
-const setTimeoutAsync = require('timeout-as-promise')
+const { readFile } = require('fs')
 
 const thanks = require('./')
 
+const readFileAsync = pify(readFile)
 const readPackageTreeAsync = pify(readPackageTree)
 
 const DOWNLOADS_URL = 'https://api.npmjs.org/downloads/point/last-month/'
@@ -58,6 +61,9 @@ async function init () {
   })
   const cwd = argv._[0] || process.cwd()
 
+  spinner.text = chalk`Reading {cyan direct dependencies} from metadata in {magenta package.json}...`
+  const directPkgNames = await readDirectPkgNames()
+
   spinner.text = chalk`Reading {cyan dependencies} from package tree in {magenta node_modules}...`
   const rootPath = await pkgDir(cwd)
   const packageTree = await readPackageTreeAsync(rootPath)
@@ -71,8 +77,8 @@ async function init () {
   spinner.text = chalk`Fetching package {cyan download counts} from {red npm}...`
   const downloadCounts = await bulkFetchDownloads(pkgNames)
 
-  // Author name -> list of packages (sorted by download count)
-  const authorsPkgNames = computeAuthorsPkgNames(allPkgs, downloadCounts)
+  // Author name -> list of packages (sorted by direct dependencies, then download count)
+  const authorsPkgNames = computeAuthorsPkgNames(allPkgs, downloadCounts, directPkgNames)
 
   // Array of author names who are seeking donations
   const authorsSeeking = Object.keys(authorsPkgNames)
@@ -84,15 +90,13 @@ async function init () {
 
   if (authorsSeeking.length) {
     spinner.succeed(chalk`You depend on {cyan ${authorsSeeking.length} authors} who are {magenta seeking donations!} ✨\n`)
-    printTable(authorsSeeking, authorsPkgNames)
+    printTable(authorsSeeking, authorsPkgNames, directPkgNames)
     if (argv.open) openDonateLinks(donateLinks)
   } else {
     spinner.info('You don\'t depend on any packages from maintainers seeking donations')
   }
 
   // TODO: compute list of **projects** seeking donations
-  // TODO: show direct dependencies first in the list
-  // console.log(readLocalDeps())
 }
 
 function createRegistryClient () {
@@ -128,15 +132,22 @@ async function fetchPkg (client, pkgName) {
   return client.getAsync(url, opts)
 }
 
-function printTable (authorsSeeking, authorsPkgNames) {
+function printTable (authorsSeeking, authorsPkgNames, directPkgNames) {
   const rows = authorsSeeking
     .map(author => {
-      const authorPkgs = authorsPkgNames[author]
+      // Highlight direct dependencies in a different color
+      const authorPkgNames = authorsPkgNames[author]
+        .map(pkgName => {
+          return directPkgNames.includes(pkgName)
+            ? chalk.green.bold(pkgName)
+            : pkgName
+        })
+
       const donateLink = thanks.authors[author].replace(RE_REMOVE_URL_PREFIX, '')
       return [
-        chalk.green(author),
+        author,
         chalk.cyan(donateLink),
-        listWithMaxLen(authorPkgs, termSize().columns - 45)
+        listWithMaxLen(authorPkgNames, termSize().columns - 45)
       ]
     })
 
@@ -180,26 +191,35 @@ async function bulkFetchDownloads (pkgNames) {
   return downloads
 }
 
-function computeAuthorsPkgNames (pkgs, downloadCounts) {
+function computeAuthorsPkgNames (pkgs, downloadCounts, directPkgNames) {
   // author name -> array of package names
-  const authorPkgs = {}
+  const authorPkgNames = {}
 
   pkgs.forEach(pkg => {
     pkg.maintainers
       .map(maintainer => maintainer.name)
       .forEach(author => {
-        if (authorPkgs[author] == null) authorPkgs[author] = []
-        authorPkgs[author].push(pkg.name)
+        if (authorPkgNames[author] == null) authorPkgNames[author] = []
+        authorPkgNames[author].push(pkg.name)
       })
   })
 
-  // Sort each author's package list by download count
-  Object.keys(authorPkgs).forEach(author => {
-    const pkgs = authorPkgs[author]
-    pkgs.sort((pkg1, pkg2) => downloadCounts[pkg2] - downloadCounts[pkg1])
+  // Sort each author's package list by direct dependencies, then download count
+  // dependencies first in the list
+  Object.keys(authorPkgNames).forEach(author => {
+    const authorDirectPkgNames = authorPkgNames[author]
+      .filter(pkgName => directPkgNames.includes(pkgName))
+
+    const pkgNames = authorPkgNames[author]
+      .filter(pkgName => !authorDirectPkgNames.includes(pkgName))
+      .sort((pkg1, pkg2) => downloadCounts[pkg2] - downloadCounts[pkg1])
+
+    pkgNames.unshift(...authorDirectPkgNames)
+
+    authorPkgNames[author] = pkgNames
   })
 
-  return authorPkgs
+  return authorPkgNames
 }
 
 function listWithMaxLen (list, maxLen) {
@@ -208,7 +228,7 @@ function listWithMaxLen (list, maxLen) {
   let str = ''
   for (let i = 0; i < list.length; i++) {
     const item = (i === 0 ? '' : ', ') + list[i]
-    if (stripAnsi(str).length + item.length >= maxLen - ELLIPSIS_LENGTH) {
+    if (stripAnsi(str).length + stripAnsi(item).length >= maxLen - ELLIPSIS_LENGTH) {
       str += ELLIPSIS.replace('XX', list.length - i)
       break
     }
@@ -232,4 +252,29 @@ async function openDonateLinks (donateLinks) {
   }
 
   spinner.succeed(chalk`Opened {cyan ${len} donate pages} in your {magenta web browser} 💻`)
+}
+
+async function readDirectPkgNames () {
+  const pkgPath = await pkgUp()
+  const pkgStr = await readFileAsync(pkgPath, 'utf8')
+
+  let pkg
+  try {
+    pkg = JSON.parse(pkgStr)
+  } catch (err) {
+    err.message = `Failed to parse package.json: ${err.message}`
+    throw err
+  }
+
+  return [].concat(
+    findDeps(pkg, 'dependencies'),
+    findDeps(pkg, 'devDependencies'),
+    findDeps(pkg, 'optionalDependencies')
+  )
+
+  function findDeps (pkg, type) {
+    return pkg[type] && typeof pkg[type] === 'object'
+      ? Object.keys(pkg[type])
+      : []
+  }
 }
