@@ -3,6 +3,8 @@
 const chalk = require('chalk')
 const got = require('got') // TODO: use simple-peer when it supports promises
 const minimist = require('minimist')
+const opn = require('opn')
+const ora = require('ora')
 const pify = require('pify')
 const pkgDir = require('pkg-dir')
 const readPackageTree = require('read-package-tree')
@@ -10,8 +12,13 @@ const RegistryClient = require('npm-registry-client') // TODO: use npm-registry-
 const registryUrl = require('registry-url')
 const stripAnsi = require('strip-ansi')
 const textTable = require('text-table')
+const { promisify } = require('util')
+const { stripIndent } = require('common-tags')
 
 const thanks = require('./')
+
+const readPackageTreeAsync = pify(readPackageTree)
+const setTimeoutAsync = promisify(setTimeout)
 
 const DOWNLOADS_URL = 'https://api.npmjs.org/downloads/point/last-month/'
 const DOWNLOADS_URL_LIMIT = 128
@@ -27,7 +34,12 @@ const spinner = ora({
 async function init () {
   const client = createRegistryClient()
 
-  const argv = minimist(process.argv.slice(2))
+  const argv = minimist(process.argv.slice(2), {
+    boolean: ['open'],
+    default: {
+      open: true
+    }
+  })
   const cwd = argv._[0] || process.cwd()
 
   // Get all packages in the nearest `node_modules` folder
@@ -48,12 +60,15 @@ async function init () {
   // Author name -> list of packages, ordered by download count
   const authorInfos = computeAuthorInfos(allPkgs, downloadCounts)
 
+  const donateLinks = []
+
   const rows = Object.keys(authorInfos)
     .filter(author => thanks.authors[author] != null)
     .sort((author1, author2) => authorInfos[author2].length - authorInfos[author1].length)
     .map(author => {
       const authorPkgs = authorInfos[author]
       const donateLink = thanks.authors[author]
+      donateLinks.push(donateLink)
       return [
         chalk.green(author),
         donateLink,
@@ -70,10 +85,24 @@ async function init () {
   if (rows.length) {
     spinner.succeed(chalk`You depend on {cyan ${rows.length} authors} who are {magenta seeking donations!} ✨\n`)
     printTable(rows)
+    if (argv.open) openDonateLinks()
   } else {
     spinner.succeed('You don\'t depend on any packages from maintainers seeking donations')
   }
 
+  async function openDonateLinks () {
+    const spinner = ora({
+      spinner: 'hearts',
+      text: chalk`Opening {cyan donate pages} in your {magenta web browser}...`
+    }).start()
+
+    await setTimeoutAsync(1000)
+
+    for (let donateLink of donateLinks) {
+      await opn(donateLink, { wait: false })
+    }
+    spinner.succeed()
+  }
 
   function printTable (rows) {
     const tableOpts = {
