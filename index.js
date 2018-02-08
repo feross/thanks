@@ -31,6 +31,7 @@ const authors = {
 const packages = {
   'babel-core': 'https://opencollective.com/babel',
   bower: 'https://opencollective.com/bower',
+  chai: 'https://opencollective.com/chaijs'
   cheerio: 'https://opencollective.com/cheerio',
   choo: 'https://opencollective.com/choo',
   gulp: 'https://opencollective.com/gulpjs',
