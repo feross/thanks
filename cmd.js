@@ -225,10 +225,11 @@ async function openDonateLinks (donateLinks) {
     text: chalk`Opening {cyan ${len} donate pages} in your {magenta web browser}...`
   }).start()
 
+  await setTimeoutAsync(2000)
+
   for (let donateLink of donateLinks) {
     await opn(donateLink, { wait: false })
-    await setTimeoutAsync(2000)
   }
 
-  spinner.succeed(chalk`Opened {cyan ${len} donate pages} in your {magenta web browser}`)
+  spinner.succeed(chalk`Opened {cyan ${len} donate pages} in your {magenta web browser} 💻`)
 }
