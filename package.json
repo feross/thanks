@@ -50,6 +50,6 @@
     "url": "git://github.com/feross/thanks.git"
   },
   "scripts": {
-    "test": "standard"
+    "test": "standard && ./cmd.js --no-open"
   }
 }
