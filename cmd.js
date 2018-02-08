@@ -22,9 +22,18 @@ const readPackageTreeAsync = pify(readPackageTree)
 const DOWNLOADS_URL = 'https://api.npmjs.org/downloads/point/last-month/'
 const DOWNLOADS_URL_LIMIT = 128
 const RE_REMOVE_URL_PREFIX = /https?:\/\/(www\.)?/
+const HEARTS_SPINNER = {
+  'interval': 100,
+  'frames': [
+    '💛 ',
+    '💙 ',
+    '💜 ',
+    '💚 '
+  ]
+}
 
 const spinner = ora({
-  spinner: 'moon',
+  spinner: HEARTS_SPINNER,
   text: chalk`Getting ready to {cyan give thanks} to {magenta maintainers}...`
 }).start()
 
@@ -213,6 +222,7 @@ async function openDonateLinks (donateLinks) {
   const len = donateLinks.length
 
   const spinner = ora({
+    spinner: HEARTS_SPINNER,
     text: chalk`Opening {cyan ${len} donate pages} in your {magenta web browser}...`
   }).start()
 
