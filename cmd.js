@@ -218,7 +218,6 @@ function listWithMaxLen (list, maxLen) {
 }
 
 async function openDonateLinks (donateLinks) {
-  console.log(donateLinks)
   const len = donateLinks.length
 
   const spinner = ora({
