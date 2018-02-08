@@ -55,9 +55,15 @@ init()
 
 async function init () {
   const argv = minimist(process.argv.slice(2), {
+    boolean: [
+      'open'
+    ],
     alias: {
       h: 'help',
       v: 'version'
+    },
+    default: {
+      open: true
     }
   })
   const cwd = argv._[0] || process.cwd()
@@ -68,7 +74,7 @@ async function init () {
   if (argv.version) {
     return runVersion()
   }
-  runThanks(cwd)
+  runThanks(cwd, argv.open)
 }
 
 function runHelp () {
@@ -93,7 +99,7 @@ function runVersion () {
   console.log(require('./package.json').version)
 }
 
-async function runThanks (cwd) {
+async function runThanks (cwd, promptToOpen) {
   spinner = ora({
     spinner: HEARTS_SPINNER,
     text: chalk`Getting ready to {cyan give thanks} to {magenta maintainers}...`
@@ -159,7 +165,7 @@ async function runThanks (cwd) {
 
   printTable(authorsSeeking, pkgNamesSeeking, authorsPkgNames, directPkgNames)
 
-  if (donateLinks.length) {
+  if (donateLinks.length && promptToOpen) {
     const prompt = new PromptConfirm(
       chalk`Want to open these {cyan donate pages} in your {magenta web browser}? 🦄`
     )
