@@ -17,6 +17,7 @@ const stripAnsi = require('strip-ansi')
 const termSize = require('term-size')
 const textTable = require('text-table')
 const { readFile } = require('fs')
+const { stripIndent } = require('common-tags')
 
 const thanks = require('./')
 
@@ -36,14 +37,15 @@ const HEARTS_SPINNER = {
   ]
 }
 
-const spinner = ora({
-  spinner: HEARTS_SPINNER,
-  text: chalk`Getting ready to {cyan give thanks} to {magenta maintainers}...`
-}).start()
+let spinner
 
 init()
   .catch(function (err) {
-    spinner.fail(`Error: ${err.message}\n`)
+    const message = `Error: ${err.message}\n`
+
+    if (spinner) spinner.fail(message)
+    else console.error(message)
+
     console.error(
       chalk`{cyan Found a bug?} Open an issue at {magenta https://github.com/feross/thanks}\n`
     )
@@ -52,15 +54,57 @@ init()
   })
 
 async function init () {
-  const client = createRegistryClient()
-
   const argv = minimist(process.argv.slice(2), {
     boolean: ['open'],
+    alias: {
+      h: 'help',
+      v: 'version'
+    },
     default: {
       open: true
     }
   })
   const cwd = argv._[0] || process.cwd()
+
+  if (argv.help) {
+    return runHelp()
+  }
+  if (argv.version) {
+    return runVersion()
+  }
+  runThanks(cwd)
+}
+
+function runHelp () {
+  const message = stripIndent`
+    thanks - Give thanks to the open source maintainers you depend on!
+
+    Usage:
+        thanks <flags> [CWD]
+
+        If CWD is omitted, then the current working directory is used. The "nearest"
+        package.json / node_modules folder will be used.
+
+    Flags:
+        -v, --version   Show current version
+        -h, --help      Show usage information
+
+  `
+  console.log(message)
+}
+
+function runVersion () {
+  console.log(require('./package.json').version)
+}
+
+async function runThanks (cwd, open) {
+  spinner = ora({
+    spinner: HEARTS_SPINNER,
+    text: chalk`Getting ready to {cyan give thanks} to {magenta maintainers}...`
+  })
+  .start()
+
+  const client = createRegistryClient()
 
   spinner.text = chalk`Reading {cyan direct dependencies} from metadata in {magenta package.json}...`
   const directPkgNames = await readDirectPkgNames()
@@ -119,7 +163,7 @@ async function init () {
 
   printTable(authorsSeeking, pkgNamesSeeking, authorsPkgNames, directPkgNames)
 
-  if (donateLinks.length && argv.open) {
+  if (donateLinks.length && open) {
     openDonateLinks(donateLinks)
   }
 }
@@ -293,7 +337,8 @@ async function openDonateLinks (donateLinks) {
   const spinner = ora({
     spinner: HEARTS_SPINNER,
     text: chalk`Opening {cyan ${len} donate pages} in your {magenta web browser}...`
-  }).start()
+  })
+  .start()
 
   await setTimeoutAsync(2000)
 
