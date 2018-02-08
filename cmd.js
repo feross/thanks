@@ -73,7 +73,7 @@ async function init () {
 
 function runHelp () {
   const message = stripIndent`
-    thanks - Give thanks to the open source maintainers you depend on!
+    thanks - 🙌 Give thanks to the open source maintainers you depend on! ✨
 
     Usage:
         thanks <flags> [CWD]
