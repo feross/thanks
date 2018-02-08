@@ -13,7 +13,6 @@ const registryUrl = require('registry-url')
 const stripAnsi = require('strip-ansi')
 const textTable = require('text-table')
 const { promisify } = require('util')
-const { stripIndent } = require('common-tags')
 
 const thanks = require('./')
 
@@ -23,13 +22,20 @@ const setTimeoutAsync = promisify(setTimeout)
 const DOWNLOADS_URL = 'https://api.npmjs.org/downloads/point/last-month/'
 const DOWNLOADS_URL_LIMIT = 128
 
-const readPackageTreeAsync = pify(readPackageTree)
-
-init().catch(handleError)
 const spinner = ora({
   spinner: 'moon',
   text: chalk`Getting ready to {cyan give thanks} to {magenta maintainers}...`
 }).start()
+
+init()
+  .catch(function (err) {
+    spinner.fail(`Error: ${err.message}\n`)
+    console.error(
+      chalk`{cyan Found a bug?} Open an issue at {magenta https://github.com/feross/thanks}\n`
+    )
+    console.error(err.stack)
+    process.exitCode = 1
+  })
 
 async function init () {
   const client = createRegistryClient()
@@ -59,6 +65,8 @@ async function init () {
 
   // Author name -> list of packages, ordered by download count
   const authorInfos = computeAuthorInfos(allPkgs, downloadCounts)
+
+  // TODO: compute list of **projects** seeking donations
 
   const donateLinks = []
 
@@ -195,10 +203,4 @@ function computeAuthorInfos (pkgs, downloadCounts) {
   })
 
   return authorInfos
-}
-
-function handleError (err) {
-  console.error(`thanks: Error: ${err.message}`)
-  console.error(err.stack)
-  process.exitCode = 1
 }
