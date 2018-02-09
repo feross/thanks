@@ -56,6 +56,7 @@ const packages = {
   'socket.io': 'https://opencollective.com/socketio',
   'styled-components': 'https://opencollective.com/styled-components',
   tachyons: 'https://opencollective.com/tachyons',
+  vue: 'https://opencollective.com/vuejs',
   webpack: 'https://opencollective.com/webpack',
   yo: 'https://opencollective.com/yeoman',
   levelup: 'https://opencollective.com/level'
