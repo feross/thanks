@@ -42,6 +42,7 @@ const packages = {
   koa: 'https://opencollective.com/koajs',
   'material-ui': 'https://opencollective.com/material-ui',
   mocha: 'https://opencollective.com/mochajs',
+  nearley: 'Email the authors, @kach and @tjvr on Github.',
   parcel: 'https://opencollective.com/parcel',
   preact: 'https://opencollective.com/preact',
   pug: 'https://opencollective.com/pug',
