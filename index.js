@@ -18,7 +18,6 @@ const authors = {
   moox: 'https://liberapay.com/MoOx/',
   mpj: 'https://www.patreon.com/funfunfunction',
   noffle: 'https://en.liberapay.com/noffle/',
-  paulirish: 'https://en.liberapay.com/paulirish/',
   shama: 'https://www.patreon.com/shama',
   sindresorhus: 'https://www.patreon.com/sindresorhus',
   staltz: 'https://en.liberapay.com/andrestaltz/',
