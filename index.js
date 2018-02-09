@@ -22,7 +22,6 @@ const authors = {
   noffle: 'https://en.liberapay.com/noffle/',
   shama: 'https://www.patreon.com/shama',
   sindresorhus: 'https://www.patreon.com/sindresorhus',
-  staltz: 'https://en.liberapay.com/andrestaltz/',
   thlorenz: 'https://www.patreon.com/thlorenz',
   yyx990803: 'https://www.patreon.com/evanyou',
   juliangruber: 'https://www.patreon.com/juliangruber'
