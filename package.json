@@ -36,19 +36,22 @@
     "@babel/plugin-transform-async-to-generator": "^7.0.0-beta.39",
     "standard": "*"
   },
+  "engines": {
+    "node": ">=6"
+  },
   "keywords": [
-    "thanks",
-    "open source",
-    "sustainability",
     "donate",
-    "support",
-    "funding",
-    "patreon",
     "donor",
-    "thank you",
+    "earn",
     "fund",
+    "funding",
+    "open source",
+    "patreon",
+    "support",
     "sustain",
-    "earn"
+    "sustainability",
+    "thank you",
+    "thanks"
   ],
   "license": "MIT",
   "main": "index.js",
@@ -57,8 +60,8 @@
     "url": "git://github.com/feross/thanks.git"
   },
   "scripts": {
-    "build": "mkdir -p dist && babel src/cmd.js > dist/cmd.js && chmod +x ./dist/cmd.js",
-    "test": "standard && npm run build && ./dist/cmd.js --no-open",
-    "prepublish": "npm run build"
+    "build": "mkdir -p dist && babel src/cmd.js > dist/cmd.js && chmod +x dist/cmd.js",
+    "prepublish": "npm run build",
+    "test": "standard && npm run build && ./dist/cmd.js --no-open"
   }
 }
