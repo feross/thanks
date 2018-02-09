@@ -18,6 +18,8 @@
 
 Open source maintainers do the work that makes our awesome apps, websites, and projects possible! Many authors devote countless hours to open source. Let's help out authors and make the software we rely on healthier at the same time!
 
+[Vote for us on Product Hunt](https://www.producthunt.com/posts/thanks) ❤️
+
 ## Usage
 
 It's easy!
