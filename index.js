@@ -22,7 +22,8 @@ const authors = {
   sindresorhus: 'https://www.patreon.com/sindresorhus',
   staltz: 'https://en.liberapay.com/andrestaltz/',
   thlorenz: 'https://www.patreon.com/thlorenz',
-  yyx990803: 'https://www.patreon.com/evanyou'
+  yyx990803: 'https://www.patreon.com/evanyou',
+  juliangruber: 'https://www.patreon.com/juliangruber'
 }
 
 /*
@@ -54,7 +55,8 @@ const packages = {
   'styled-components': 'https://opencollective.com/styled-components',
   tachyons: 'https://opencollective.com/tachyons',
   webpack: 'https://opencollective.com/webpack',
-  yo: 'https://opencollective.com/yeoman'
+  yo: 'https://opencollective.com/yeoman',
+  levelup: 'https://opencollective.com/level'
 }
 
 module.exports = { authors, packages }
