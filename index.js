@@ -12,6 +12,7 @@ const authors = {
   hueniverse: 'https://www.patreon.com/eranhammer',
   hughsk: 'https://hughsk.io/donate/',
   kgryte: 'https://www.patreon.com/athan',
+  limonte: 'https://www.patreon.com/limonte',
   mafintosh: 'https://www.patreon.com/mafintosh',
   marijn: 'https://www.patreon.com/marijn',
   mikeal: 'https://www.patreon.com/mikeal',
