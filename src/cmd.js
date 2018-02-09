@@ -213,7 +213,12 @@ async function fetchPkg (client, pkgName) {
     staleOk: true,
     auth: registryAuthToken()
   }
-  return client.getAsync(url, opts)
+  try {
+    return await client.getAsync(url, opts)
+  } catch (err) {
+    console.error(chalk`\n{red error fetching}`, pkgName, err)
+    return {}
+  }
 }
 
 function printTable (authorsSeeking, pkgNamesSeeking, authorsPkgNames, directPkgNames) {
@@ -281,14 +286,20 @@ async function bulkFetchPkgDownloads (pkgNames) {
     const url = DOWNLOADS_URL + pkgNamesSubset.join(',')
     const res = await got(url, { json: true })
     Object.keys(res.body).forEach(pkgName => {
-      pkgDownloads[pkgName] = res.body[pkgName].downloads
+      if (res.body[pkgName]) {
+        pkgDownloads[pkgName] = res.body[pkgName].downloads
+      }
     })
   }
 
   await Promise.all(scopedPkgNames.map(async scopedPkgName => {
     const url = DOWNLOADS_URL + scopedPkgName
-    const res = await got(url, { json: true })
-    pkgDownloads[scopedPkgName] = res.body.downloads
+    try {
+      const res = await got(url, { json: true })
+      pkgDownloads[scopedPkgName] = res.body.downloads
+    } catch (err) {
+      console.error(chalk`\n{red error fetching}`, scopedPkgName, err)
+    }
   }))
 
   return pkgDownloads
