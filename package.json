@@ -57,7 +57,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/feross/thanks.git"
+    "url": "git+https://github.com/feross/thanks.git"
   },
   "scripts": {
     "build": "mkdir -p dist && babel src/cmd.js > dist/cmd.js && chmod +x dist/cmd.js",
