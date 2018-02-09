@@ -13,6 +13,7 @@ const authors = {
   hughsk: 'https://hughsk.io/donate/',
   kgryte: 'https://www.patreon.com/athan',
   mafintosh: 'https://www.patreon.com/mafintosh',
+  marijn: 'https://www.patreon.com/marijn',
   mikeal: 'https://www.patreon.com/mikeal',
   mmckegg: 'https://www.patreon.com/MattMcKegg',
   moox: 'https://liberapay.com/MoOx/',
