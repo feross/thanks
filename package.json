@@ -40,18 +40,18 @@
     "node": ">=6"
   },
   "keywords": [
-    "thanks",
-    "open source",
-    "sustainability",
     "donate",
-    "support",
-    "funding",
-    "patreon",
     "donor",
-    "thank you",
+    "earn",
     "fund",
+    "funding",
+    "open source",
+    "patreon",
+    "support",
     "sustain",
-    "earn"
+    "sustainability",
+    "thank you",
+    "thanks"
   ],
   "license": "MIT",
   "main": "index.js",
@@ -61,7 +61,7 @@
   },
   "scripts": {
     "build": "mkdir dist && babel src/cmd.js > dist/cmd.js && chmod +x ./dist/cmd.js",
-    "test": "standard && npm run build && ./dist/cmd.js --no-open",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "test": "standard && npm run build && ./dist/cmd.js --no-open"
   }
 }
