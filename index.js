@@ -10,6 +10,7 @@ const authors = {
   feross: 'https://www.patreon.com/feross',
   getify: 'https://www.patreon.com/getify',
   hueniverse: 'https://www.patreon.com/eranhammer',
+  hughsk: 'https://hughsk.io/donate/',
   mafintosh: 'https://www.patreon.com/mafintosh',
   mikeal: 'https://www.patreon.com/mikeal',
   mmckegg: 'https://www.patreon.com/MattMcKegg',
