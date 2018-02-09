@@ -52,6 +52,7 @@ const packages = {
   pug: 'https://opencollective.com/pug',
   'react-native-elements': 'https://opencollective.com/react-native-elements',
   'redux-devtools-extension': 'https://opencollective.com/redux-devtools-extension',
+  'react-slick': 'https://opencollective.com/react-slick',
   rollup: 'https://opencollective.com/rollup',
   'socket.io': 'https://opencollective.com/socketio',
   'styled-components': 'https://opencollective.com/styled-components',
