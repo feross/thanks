@@ -57,7 +57,7 @@
     "url": "git://github.com/feross/thanks.git"
   },
   "scripts": {
-    "build": "mkdir dist && babel src/cmd.js > dist/cmd.js && chmod +x ./dist/cmd.js",
+    "build": "mkdir -p dist && babel src/cmd.js > dist/cmd.js && chmod +x ./dist/cmd.js",
     "test": "standard && npm run build && ./dist/cmd.js --no-open",
     "prepublish": "npm run build"
   }
