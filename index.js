@@ -25,7 +25,8 @@ const authors = {
   staltz: 'https://en.liberapay.com/andrestaltz/',
   thlorenz: 'https://www.patreon.com/thlorenz',
   yyx990803: 'https://www.patreon.com/evanyou',
-  juliangruber: 'https://www.patreon.com/juliangruber'
+  juliangruber: 'https://www.patreon.com/juliangruber',
+  steelbrain: 'https://www.patreon.com/steelbrain'
 }
 
 /*
