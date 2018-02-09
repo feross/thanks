@@ -26,7 +26,8 @@ const readPackageTreeAsync = pify(readPackageTree)
 
 const DOWNLOADS_URL = 'https://api.npmjs.org/downloads/point/last-month/'
 const DOWNLOADS_URL_LIMIT = 128
-const RE_REMOVE_URL_PREFIX = /https?:\/\/(www\.)?/
+const RE_URL_PREFIX = /https?:\/\/(www\.)?/
+const RE_TRAILING_SLASH = /\/$/
 const HEARTS_SPINNER = {
   'interval': 100,
   'frames': [
@@ -254,7 +255,9 @@ function printTable (authorsSeeking, pkgNamesSeeking, authorsPkgNames, directPkg
 }
 
 function prettyUrl (url) {
-  return url.replace(RE_REMOVE_URL_PREFIX, '')
+  return url
+    .replace(RE_URL_PREFIX, '')
+    .replace(RE_TRAILING_SLASH, '')
 }
 
 async function bulkFetchPkgDownloads (pkgNames) {
@@ -341,7 +344,7 @@ async function openDonateLinks (donateLinks) {
   for (let donateLink of donateLinks) {
     await opn(donateLink, { wait: false })
   }
-  console.log(chalk`{bold.yellow You are awesome!} 🌟`)
+  console.log(chalk`\n{bold.yellow You are awesome!} 🌟`)
 }
 
 async function readDirectPkgNames () {
