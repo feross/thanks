@@ -164,7 +164,9 @@ async function runThanks (cwd, promptToOpen) {
     )
   }
 
-  printTable(authorsSeeking, pkgNamesSeeking, authorsPkgNames, directPkgNames)
+  if (authorsSeeking.length > 0 || pkgNamesSeeking.length > 0) {
+    printTable(authorsSeeking, pkgNamesSeeking, authorsPkgNames, directPkgNames)
+  }
 
   if (donateLinks.length && promptToOpen) {
     const prompt = new PromptConfirm(
