@@ -58,7 +58,7 @@
   },
   "scripts": {
     "build": "babel src/cmd.js > dist/cmd.js",
-    "test": "standard && ./cmd.js --no-open",
+    "test": "standard && npm run build && ./dist/cmd.js --no-open",
     "prepublish": "npm run build"
   }
 }
