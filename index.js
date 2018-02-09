@@ -25,7 +25,8 @@ const authors = {
   staltz: 'https://en.liberapay.com/andrestaltz/',
   thlorenz: 'https://www.patreon.com/thlorenz',
   yyx990803: 'https://www.patreon.com/evanyou',
-  juliangruber: 'https://www.patreon.com/juliangruber'
+  juliangruber: 'https://www.patreon.com/juliangruber',
+  olstenlarck: 'https://www.paypal.me/tunnckoCore'
 }
 
 /*
@@ -58,7 +59,16 @@ const packages = {
   tachyons: 'https://opencollective.com/tachyons',
   webpack: 'https://opencollective.com/webpack',
   yo: 'https://opencollective.com/yeoman',
-  levelup: 'https://opencollective.com/level'
+  levelup: 'https://opencollective.com/level',
+  'koa-ip-filter': 'https://www.paypal.me/tunnckoCore',
+  'koa-better-body': 'https://www.paypal.me/tunnckoCore',
+  'koa-better-router': 'https://www.paypal.me/tunnckoCore',
+  'koa-rest-router': 'https://www.paypal.me/tunnckoCore',
+  'parse-function': 'https://www.paypal.me/tunnckoCore',
+  'get-installed-path': 'https://www.paypal.me/tunnckoCore',
+  gibon: 'https://www.paypal.me/tunnckoCore',
+  dush: 'https://www.paypal.me/tunnckoCore',
+  hela: 'https://www.paypal.me/tunnckoCore'
 }
 
 module.exports = { authors, packages }
