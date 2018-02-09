@@ -19,7 +19,7 @@ const { readFile } = require('fs')
 const { stripIndent } = require('common-tags')
 const PromptConfirm = require('prompt-confirm')
 
-const thanks = require('./')
+const thanks = require('../')
 
 const readFileAsync = pify(readFile)
 const readPackageTreeAsync = pify(readPackageTree)

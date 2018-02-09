@@ -7,7 +7,7 @@
     "email": "feross@feross.org",
     "url": "https://feross.org"
   },
-  "bin": "cmd.js",
+  "bin": "dist/cmd.js",
   "bugs": {
     "url": "https://github.com/feross/thanks/issues"
   },
@@ -31,6 +31,9 @@
     "text-table": "^0.2.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.39",
+    "@babel/core": "^7.0.0-beta.39",
+    "@babel/plugin-transform-async-to-generator": "^7.0.0-beta.39",
     "standard": "*"
   },
   "keywords": [
@@ -54,6 +57,8 @@
     "url": "git://github.com/feross/thanks.git"
   },
   "scripts": {
-    "test": "standard && ./cmd.js --no-open"
+    "build": "babel src/cmd.js > dist/cmd.js",
+    "test": "standard && ./cmd.js --no-open",
+    "prepublish": "npm run build"
   }
 }
