@@ -117,6 +117,11 @@ async function runThanks (cwd, promptToOpen) {
   const packageTree = await readPackageTreeAsync(rootPath)
   const pkgNames = packageTree.children.map(node => node.package.name)
 
+  if (pkgNames.length === 0) {
+    spinner.fail(chalk`{red No packages} found in the {magenta node_modules} folder. Try running {cyan npm install} first, silly! 😆`)
+    return
+  }
+
   // Get latest registry data on each local package, since the local data does
   // not include the list of maintainers
   spinner.text = chalk`Fetching package {cyan maintainers} from {red npm}...`
