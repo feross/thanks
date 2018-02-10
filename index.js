@@ -28,6 +28,7 @@ const authors = {
   steelbrain: 'https://www.patreon.com/steelbrain',
   thlorenz: 'https://www.patreon.com/thlorenz',
   typicode: 'https://www.patreon.com/typicode',
+  yoshuawuyts: 'https://www.patreon.com/yoshuawuyts',
   yyx990803: 'https://www.patreon.com/evanyou'
 }
 
