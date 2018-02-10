@@ -24,6 +24,7 @@ const authors = {
   shama: 'https://www.patreon.com/shama',
   sindresorhus: 'https://www.patreon.com/sindresorhus',
   thlorenz: 'https://www.patreon.com/thlorenz',
+  typicode: 'https://www.patreon.com/typicode',
   yyx990803: 'https://www.patreon.com/evanyou',
   juliangruber: 'https://www.patreon.com/juliangruber'
 }
