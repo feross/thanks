@@ -261,7 +261,6 @@ const packages = {
   'streetmix': 'https://opencollective.com/streetmix',
   'strider': 'https://opencollective.com/strider',
   'styled-components': 'https://opencollective.com/styled-components',
-<<<<<<< HEAD
   'stylelint': 'https://opencollective.com/stylelint',
   'surfbird': 'https://opencollective.com/surfbird',
   'sweetalert': 'https://opencollective.com/sweetalert',
@@ -296,21 +295,6 @@ const packages = {
   'WPGulp': 'https://opencollective.com/wpgulp',
   'xss-listener': 'https://opencollective.com/xss-listener',
   'yo': 'https://opencollective.com/yeoman'
-=======
-  tachyons: 'https://opencollective.com/tachyons',
-  webpack: 'https://opencollective.com/webpack',
-  yo: 'https://opencollective.com/yeoman',
-  levelup: 'https://opencollective.com/level',
-  'koa-ip-filter': 'https://www.paypal.me/tunnckoCore',
-  'koa-better-body': 'https://www.paypal.me/tunnckoCore',
-  'koa-better-router': 'https://www.paypal.me/tunnckoCore',
-  'koa-rest-router': 'https://www.paypal.me/tunnckoCore',
-  'parse-function': 'https://www.paypal.me/tunnckoCore',
-  'get-installed-path': 'https://www.paypal.me/tunnckoCore',
-  gibon: 'https://www.paypal.me/tunnckoCore',
-  dush: 'https://www.paypal.me/tunnckoCore',
-  hela: 'https://www.paypal.me/tunnckoCore'
->>>>>>> b092440a3495a14a161795f25d39e456e2ce7376
 }
 
 module.exports = { authors, packages }
