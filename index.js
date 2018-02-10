@@ -24,6 +24,7 @@ const authors = {
   mpj: 'https://www.patreon.com/funfunfunction',
   noffle: 'https://en.liberapay.com/noffle/',
   olstenlarck: 'https://www.paypal.me/tunnckoCore',
+  posva: 'https://www.github.com/posva/donate',
   shama: 'https://www.patreon.com/shama',
   sindresorhus: 'https://www.patreon.com/sindresorhus',
   steelbrain: 'https://www.patreon.com/steelbrain',
