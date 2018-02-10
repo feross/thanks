@@ -30,7 +30,8 @@ const authors = {
   thlorenz: 'https://www.patreon.com/thlorenz',
   typicode: 'https://www.patreon.com/typicode',
   yoshuawuyts: 'https://www.patreon.com/yoshuawuyts',
-  yyx990803: 'https://www.patreon.com/evanyou'
+  yyx990803: 'https://www.patreon.com/evanyou',
+  rstoenescu: 'https://www.patreon.com/quasarframework'
 }
 
 /*
