@@ -77,7 +77,6 @@ const packages = {
   'slim-js': 'https://opencollective.com/slimjs',
   'ng2-date-picker': 'https://opencollective.com/angular-datepicker',
   'esdiscuss.org': 'https://opencollective.com/esdiscuss',
-  'undefined': 'https://opencollective.com/turf',
   'sinon': 'https://opencollective.com/sinon',
   'lad': 'https://opencollective.com/lad',
   'vis': 'https://opencollective.com/vis',
