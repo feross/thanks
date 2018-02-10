@@ -97,7 +97,7 @@ function runHelp () {
 }
 
 function runVersion () {
-  console.log(require('./package.json').version)
+  console.log(require('../package.json').version)
 }
 
 async function runThanks (cwd, promptToOpen) {
