@@ -23,6 +23,7 @@ const authors = {
   moox: 'https://liberapay.com/MoOx/',
   mpj: 'https://www.patreon.com/funfunfunction',
   noffle: 'https://en.liberapay.com/noffle/',
+  paulcbetts: 'https://www.patreon.com/paulcbetts',
   olstenlarck: 'https://www.paypal.me/tunnckoCore',
   shama: 'https://www.patreon.com/shama',
   sindresorhus: 'https://www.patreon.com/sindresorhus',
