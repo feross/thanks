@@ -10,6 +10,7 @@ const authors = {
   bevacqua: 'https://www.patreon.com/bevacqua',
   feross: 'https://www.patreon.com/feross',
   getify: 'https://www.patreon.com/getify',
+  gr2m: 'https://railsgirlssummerofcode.org/campaign/',
   hueniverse: 'https://www.patreon.com/eranhammer',
   hughsk: 'https://hughsk.io/donate/',
   jayphelps: 'https://www.patreon.com/jayphelps',
