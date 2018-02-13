@@ -25,6 +25,7 @@ const authors = {
   moox: 'https://liberapay.com/MoOx/',
   mpj: 'https://www.patreon.com/funfunfunction',
   noffle: 'https://en.liberapay.com/noffle/',
+  paulcbetts: 'https://www.patreon.com/paulcbetts',
   olstenlarck: 'https://www.paypal.me/tunnckoCore',
   posva: 'https://www.github.com/posva/donate',
   riyadhalnur: 'https://www.paypal.me/riyadhalnur',
