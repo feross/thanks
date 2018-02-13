@@ -75,7 +75,7 @@ async function init () {
   if (argv.version) {
     return runVersion()
   }
-  runThanks(cwd, argv.open)
+  return runThanks(cwd, argv.open)
 }
 
 function runHelp () {

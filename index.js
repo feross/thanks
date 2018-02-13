@@ -13,8 +13,10 @@ const authors = {
   hueniverse: 'https://www.patreon.com/eranhammer',
   hughsk: 'https://hughsk.io/donate/',
   jayphelps: 'https://www.patreon.com/jayphelps',
+  jaredhanson: 'https://www.patreon.com/jaredhanson',
   juliangruber: 'https://www.patreon.com/juliangruber',
   kgryte: 'https://www.patreon.com/athan',
+  korynunn: 'https://www.patreon.com/korynunn',
   limonte: 'https://www.patreon.com/limonte',
   mafintosh: 'https://www.patreon.com/mafintosh',
   marijn: 'https://www.patreon.com/marijn',
@@ -24,14 +26,18 @@ const authors = {
   mpj: 'https://www.patreon.com/funfunfunction',
   noffle: 'https://en.liberapay.com/noffle/',
   olstenlarck: 'https://www.paypal.me/tunnckoCore',
+  posva: 'https://www.github.com/posva/donate',
+  riyadhalnur: 'https://www.paypal.me/riyadhalnur',
   shama: 'https://www.patreon.com/shama',
   sindresorhus: 'https://www.patreon.com/sindresorhus',
   steelbrain: 'https://www.patreon.com/steelbrain',
   thlorenz: 'https://www.patreon.com/thlorenz',
+  tomchentw: 'https://www.patreon.com/tomchentw',
   typicode: 'https://www.patreon.com/typicode',
   yoshuawuyts: 'https://www.patreon.com/yoshuawuyts',
   yyx990803: 'https://www.patreon.com/evanyou',
-  akepinski: 'https://www.patreon.com/akepinski'
+  akepinski: 'https://www.patreon.com/akepinski',
+  rstoenescu: 'https://www.patreon.com/quasarframework'
 }
 
 /*
