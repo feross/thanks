@@ -38,6 +38,7 @@ const authors = {
   typicode: 'https://www.patreon.com/typicode',
   yoshuawuyts: 'https://www.patreon.com/yoshuawuyts',
   yyx990803: 'https://www.patreon.com/evanyou',
+  akepinski: 'https://www.patreon.com/akepinski',
   rstoenescu: 'https://www.patreon.com/quasarframework'
 }
 
