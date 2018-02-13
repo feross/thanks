@@ -75,7 +75,7 @@ async function init () {
   if (argv.version) {
     return runVersion()
   }
-  runThanks(cwd, argv.open)
+  return runThanks(cwd, argv.open)
 }
 
 function runHelp () {
@@ -97,7 +97,7 @@ function runHelp () {
 }
 
 function runVersion () {
-  console.log(require('./package.json').version)
+  console.log(require('../package.json').version)
 }
 
 async function runThanks (cwd, promptToOpen) {
@@ -125,13 +125,13 @@ async function runThanks (cwd, promptToOpen) {
   // Get latest registry data on each local package, since the local data does
   // not include the list of maintainers
   spinner.text = chalk`Fetching package {cyan maintainers} from {red npm}...`
-  const allPkgs = await Promise.all(pkgNames.map(pkgName => fetchPkg(client, pkgName)))
+  let pkgs = await fetchPkgs(client, pkgNames)
 
   spinner.text = chalk`Fetching package {cyan download counts} from {red npm}...`
   const pkgDownloads = await bulkFetchPkgDownloads(pkgNames)
 
   // Author name -> list of packages (sorted by direct dependencies, then download count)
-  const authorsPkgNames = computeAuthorsPkgNames(allPkgs, pkgDownloads, directPkgNames)
+  const authorsPkgNames = computeAuthorsPkgNames(pkgs, pkgDownloads, directPkgNames)
 
   // Array of author names who are seeking donations (sorted by download count)
   const authorsSeeking = Object.keys(authorsPkgNames)
@@ -202,18 +202,34 @@ function isScopedPkg (pkgName) {
   return pkgName.includes('/')
 }
 
-async function fetchPkg (client, pkgName) {
-  // Note: The registry does not support fetching versions for scoped packages
-  const url = isScopedPkg(pkgName)
-    ? `${registryUrl()}${pkgName.replace('/', '%2F')}`
-    : `${registryUrl()}${pkgName}/latest`
+async function fetchPkgs (client, pkgNames) {
+  const pkgs = await Promise.all(pkgNames.map(fetchPkg))
 
-  const opts = {
-    timeout: 30 * 1000,
-    staleOk: true,
-    auth: registryAuthToken()
+  // Filter out `null`s which come from private packages or GitHub dependencies
+  // which don't exist on npm (so don't have package metadata)
+  return pkgs.filter(Boolean)
+
+  async function fetchPkg (pkgName) {
+    // Note: The registry does not support fetching versions for scoped packages
+    const url = isScopedPkg(pkgName)
+      ? `${registryUrl()}${pkgName.replace('/', '%2F')}`
+      : `${registryUrl()}${pkgName}/latest`
+
+    const opts = {
+      timeout: 30 * 1000,
+      staleOk: true,
+      auth: registryAuthToken()
+    }
+
+    let pkg = null
+    try {
+      pkg = await client.getAsync(url, opts)
+    } catch (err) {
+      // Private packages or GitHub dependecies that don't exist on npm will return
+      // 404 errors, so just skip those packages
+    }
+    return pkg
   }
-  return client.getAsync(url, opts)
 }
 
 function printTable (authorsSeeking, pkgNamesSeeking, authorsPkgNames, directPkgNames) {
@@ -279,16 +295,34 @@ async function bulkFetchPkgDownloads (pkgNames) {
   for (let start = 0; start < normalPkgNames.length; start += DOWNLOADS_URL_LIMIT) {
     const pkgNamesSubset = normalPkgNames.slice(start, start + DOWNLOADS_URL_LIMIT)
     const url = DOWNLOADS_URL + pkgNamesSubset.join(',')
-    const res = await got(url, { json: true })
+    let res
+    try {
+      res = await got(url, { json: true })
+    } catch (err) {
+      // If a single package is requested and does not exists, it will return a 404
+      // error. Ignore the error.
+      continue
+    }
     Object.keys(res.body).forEach(pkgName => {
-      pkgDownloads[pkgName] = res.body[pkgName].downloads
+      const stats = res.body[pkgName]
+      // If multiple packages are requested and some of them do not exist, those keys
+      // will have a value of null. Skip those packages.
+      if (stats) pkgDownloads[pkgName] = stats.downloads
     })
   }
 
+  // Scoped packages must be requested individually since they're not supported in
+  // bulk queries.
   await Promise.all(scopedPkgNames.map(async scopedPkgName => {
     const url = DOWNLOADS_URL + scopedPkgName
-    const res = await got(url, { json: true })
-    pkgDownloads[scopedPkgName] = res.body.downloads
+    let res
+    try {
+      res = await got(url, { json: true })
+      pkgDownloads[scopedPkgName] = res.body.downloads
+    } catch (err) {
+      // If a single package is requested and does not exists, it will return a 404
+      // error. Ignore the error.
+    }
   }))
 
   return pkgDownloads
