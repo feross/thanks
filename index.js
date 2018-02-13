@@ -16,6 +16,7 @@ const authors = {
   juliangruber: 'https://www.patreon.com/juliangruber',
   kgryte: 'https://www.patreon.com/athan',
   limonte: 'https://www.patreon.com/limonte',
+  loghorn: 'https://paypal.me/Loghorn',
   mafintosh: 'https://www.patreon.com/mafintosh',
   marijn: 'https://www.patreon.com/marijn',
   mikeal: 'https://www.patreon.com/mikeal',
