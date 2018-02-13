@@ -25,6 +25,7 @@ const authors = {
   mpj: 'https://www.patreon.com/funfunfunction',
   noffle: 'https://en.liberapay.com/noffle/',
   olstenlarck: 'https://www.paypal.me/tunnckoCore',
+  posva: 'https://www.github.com/posva/donate',
   riyadhalnur: 'https://www.paypal.me/riyadhalnur',
   shama: 'https://www.patreon.com/shama',
   sindresorhus: 'https://www.patreon.com/sindresorhus',
