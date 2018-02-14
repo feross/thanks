@@ -21,6 +21,7 @@ const authors = {
   kgryte: 'https://www.patreon.com/athan',
   korynunn: 'https://www.patreon.com/korynunn',
   limonte: 'https://www.patreon.com/limonte',
+  loghorn: 'https://paypal.me/Loghorn',
   mafintosh: 'https://www.patreon.com/mafintosh',
   marijn: 'https://www.patreon.com/marijn',
   mikeal: 'https://www.patreon.com/mikeal',
