@@ -5,6 +5,7 @@
  * package tree, they will be prompted to donate.
  */
 const authors = {
+  smilerryan: 'https://paypal.me/smilerryanyt',
   andrewnez: 'https://en.liberapay.com/andrew/',
   antony: 'https://www.patreon.com/wirah',
   anteriovieira: 'https://www.patreon.com/anteriovieira',
