@@ -32,6 +32,7 @@ const authors = {
   paulcbetts: 'https://www.patreon.com/paulcbetts',
   olstenlarck: 'https://www.paypal.me/tunnckoCore',
   posva: 'https://www.github.com/posva/donate',
+  qubyte: 'https://www.paypal.me/qubyte',
   riyadhalnur: 'https://www.paypal.me/riyadhalnur',
   shama: 'https://www.patreon.com/shama',
   sindresorhus: 'https://www.patreon.com/sindresorhus',
