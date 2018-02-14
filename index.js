@@ -185,6 +185,7 @@ const packages = {
   'lumo': 'https://opencollective.com/lumo',
   'material-ui': 'https://opencollective.com/material-ui',
   'material-ui-build': 'https://opencollective.com/material-ui',
+  'materialize-css': 'https://www.patreon.com/materialize',
   'Matterwiki': 'https://opencollective.com/matterwiki',
   'mimic': 'https://opencollective.com/mimic',
   'mobx': 'https://opencollective.com/mobx',
