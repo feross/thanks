@@ -42,7 +42,8 @@ const authors = {
   yoshuawuyts: 'https://www.patreon.com/yoshuawuyts',
   yyx990803: 'https://www.patreon.com/evanyou',
   akepinski: 'https://www.patreon.com/akepinski',
-  rstoenescu: 'https://www.patreon.com/quasarframework'
+  rstoenescu: 'https://www.patreon.com/quasarframework',
+  jpcote: 'https://beerpay.io/cotejp'
 }
 
 /*
