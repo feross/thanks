@@ -9,6 +9,7 @@ const authors = {
   andrewnez: 'https://en.liberapay.com/andrew/',
   anteriovieira: 'https://www.patreon.com/anteriovieira',
   antony: 'https://www.patreon.com/wirah',
+  armaldio: 'https://www.paypal.me/armaldio',
   bevacqua: 'https://www.patreon.com/bevacqua',
   diegohaz: 'https://www.patreon.com/diegohaz',
   feross: 'https://www.patreon.com/feross',
