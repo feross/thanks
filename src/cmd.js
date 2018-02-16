@@ -8,6 +8,7 @@ const ora = require('ora')
 const pify = require('pify')
 const pkgDir = require('pkg-dir')
 const pkgUp = require('pkg-up')
+const PromptConfirm = require('prompt-confirm')
 const readPackageTree = require('read-package-tree')
 const registryAuthToken = require('registry-auth-token')
 const RegistryClient = require('npm-registry-client') // TODO: use npm-registry-fetch when done
@@ -17,7 +18,6 @@ const termSize = require('term-size')
 const textTable = require('text-table')
 const { readFile } = require('fs')
 const { stripIndent } = require('common-tags')
-const PromptConfirm = require('prompt-confirm')
 
 const thanks = require('../')
 
@@ -104,8 +104,7 @@ async function runThanks (cwd, promptToOpen) {
   spinner = ora({
     spinner: HEARTS_SPINNER,
     text: chalk`Getting ready to {cyan give thanks} to {magenta maintainers}...`
-  })
-  .start()
+  }).start()
 
   const client = createRegistryClient()
 

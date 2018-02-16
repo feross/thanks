@@ -5,9 +5,10 @@
  * package tree, they will be prompted to donate.
  */
 const authors = {
+  akepinski: 'https://www.patreon.com/akepinski',
   andrewnez: 'https://en.liberapay.com/andrew/',
-  antony: 'https://www.patreon.com/wirah',
   anteriovieira: 'https://www.patreon.com/anteriovieira',
+  antony: 'https://www.patreon.com/wirah',
   bevacqua: 'https://www.patreon.com/bevacqua',
   diegohaz: 'https://www.patreon.com/diegohaz',
   feross: 'https://www.patreon.com/feross',
@@ -15,8 +16,9 @@ const authors = {
   gr2m: 'https://railsgirlssummerofcode.org/campaign/',
   hueniverse: 'https://www.patreon.com/eranhammer',
   hughsk: 'https://hughsk.io/donate/',
-  jayphelps: 'https://www.patreon.com/jayphelps',
   jaredhanson: 'https://www.patreon.com/jaredhanson',
+  jayphelps: 'https://www.patreon.com/jayphelps',
+  johnjleider: 'https://www.patreon.com/vuetify',
   juliangruber: 'https://www.patreon.com/juliangruber',
   kgryte: 'https://www.patreon.com/athan',
   korynunn: 'https://www.patreon.com/korynunn',
@@ -28,11 +30,13 @@ const authors = {
   mmckegg: 'https://www.patreon.com/MattMcKegg',
   moox: 'https://liberapay.com/MoOx/',
   mpj: 'https://www.patreon.com/funfunfunction',
+  mrahmadawais: 'https://pay.paddle.com/checkout/515568',
   noffle: 'https://en.liberapay.com/noffle/',
-  paulcbetts: 'https://www.patreon.com/paulcbetts',
   olstenlarck: 'https://www.paypal.me/tunnckoCore',
+  paulcbetts: 'https://www.patreon.com/paulcbetts',
   posva: 'https://www.github.com/posva/donate',
   riyadhalnur: 'https://www.paypal.me/riyadhalnur',
+  rstoenescu: 'https://www.patreon.com/quasarframework',
   shama: 'https://www.patreon.com/shama',
   sindresorhus: 'https://www.patreon.com/sindresorhus',
   steelbrain: 'https://www.patreon.com/steelbrain',
@@ -41,8 +45,6 @@ const authors = {
   typicode: 'https://www.patreon.com/typicode',
   yoshuawuyts: 'https://www.patreon.com/yoshuawuyts',
   yyx990803: 'https://www.patreon.com/evanyou',
-  akepinski: 'https://www.patreon.com/akepinski',
-  rstoenescu: 'https://www.patreon.com/quasarframework',
   jpcote: 'https://beerpay.io/cotejp'
 }
 
@@ -197,6 +199,7 @@ const packages = {
   'moro': 'https://opencollective.com/moro',
   'mup': 'https://opencollective.com/meteor-up',
   'ndm': 'https://opencollective.com/ndm',
+  'nearley': 'https://nearley.js.org/#give-to-nearley',
   'nestjs': 'https://opencollective.com/nest',
   'nexe': 'https://opencollective.com/nexe',
   'ng2-date-picker': 'https://opencollective.com/angular-datepicker',
