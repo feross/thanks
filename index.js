@@ -28,6 +28,7 @@ const authors = {
   mmckegg: 'https://www.patreon.com/MattMcKegg',
   moox: 'https://liberapay.com/MoOx/',
   mpj: 'https://www.patreon.com/funfunfunction',
+  mrahmadawais: 'https://pay.paddle.com/checkout/515568',
   noffle: 'https://en.liberapay.com/noffle/',
   paulcbetts: 'https://www.patreon.com/paulcbetts',
   olstenlarck: 'https://www.paypal.me/tunnckoCore',
