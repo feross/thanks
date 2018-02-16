@@ -389,6 +389,13 @@ async function openDonateLinks (donateLinks) {
 
 async function readDirectPkgNames () {
   const pkgPath = await pkgUp()
+
+  if (pkgPath == null) {
+    throw new Error(
+      'No package.json found. Run this in a Node.js project folder!'
+    )
+  }
+
   const pkgStr = await readFileAsync(pkgPath, 'utf8')
 
   let pkg
