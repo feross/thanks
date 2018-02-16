@@ -19,6 +19,7 @@ const authors = {
   jaredhanson: 'https://www.patreon.com/jaredhanson',
   jayphelps: 'https://www.patreon.com/jayphelps',
   johnjleider: 'https://www.patreon.com/vuetify',
+  jpcote: 'https://beerpay.io/cotejp',
   juliangruber: 'https://www.patreon.com/juliangruber',
   kgryte: 'https://www.patreon.com/athan',
   korynunn: 'https://www.patreon.com/korynunn',
@@ -45,8 +46,7 @@ const authors = {
   tomchentw: 'https://www.patreon.com/tomchentw',
   typicode: 'https://www.patreon.com/typicode',
   yoshuawuyts: 'https://www.patreon.com/yoshuawuyts',
-  yyx990803: 'https://www.patreon.com/evanyou',
-  jpcote: 'https://beerpay.io/cotejp'
+  yyx990803: 'https://www.patreon.com/evanyou'
 }
 
 /*
