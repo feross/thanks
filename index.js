@@ -10,6 +10,7 @@ const authors = {
   anteriovieira: 'https://www.patreon.com/anteriovieira',
   antony: 'https://www.patreon.com/wirah',
   bevacqua: 'https://www.patreon.com/bevacqua',
+  dannyfritz: 'https://www.patreon.com/dannyfritz',
   diegohaz: 'https://www.patreon.com/diegohaz',
   feross: 'https://www.patreon.com/feross',
   getify: 'https://www.patreon.com/getify',
