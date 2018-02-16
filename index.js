@@ -44,7 +44,8 @@ const authors = {
   tomchentw: 'https://www.patreon.com/tomchentw',
   typicode: 'https://www.patreon.com/typicode',
   yoshuawuyts: 'https://www.patreon.com/yoshuawuyts',
-  yyx990803: 'https://www.patreon.com/evanyou'
+  yyx990803: 'https://www.patreon.com/evanyou',
+  jpcote: 'https://beerpay.io/cotejp'
 }
 
 /*
