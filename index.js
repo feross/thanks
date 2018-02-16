@@ -198,6 +198,7 @@ const packages = {
   'moro': 'https://opencollective.com/moro',
   'mup': 'https://opencollective.com/meteor-up',
   'ndm': 'https://opencollective.com/ndm',
+  'nearley': 'https://nearley.js.org/#give-to-nearley',
   'nestjs': 'https://opencollective.com/nest',
   'nexe': 'https://opencollective.com/nexe',
   'ng2-date-picker': 'https://opencollective.com/angular-datepicker',
