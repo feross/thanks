@@ -33,6 +33,7 @@ const authors = {
   mpj: 'https://www.patreon.com/funfunfunction',
   mrahmadawais: 'https://pay.paddle.com/checkout/515568',
   noffle: 'https://en.liberapay.com/noffle/',
+  nzakas: 'https://www.paypal.me/nczonline',
   olstenlarck: 'https://www.paypal.me/tunnckoCore',
   paulcbetts: 'https://www.patreon.com/paulcbetts',
   posva: 'https://www.github.com/posva/donate',
