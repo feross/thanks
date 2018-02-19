@@ -29,6 +29,7 @@ const authors = {
   loghorn: 'https://paypal.me/Loghorn',
   mafintosh: 'https://www.patreon.com/mafintosh',
   marijn: 'https://www.patreon.com/marijn',
+  mblarsen: 'https://flattr.com/@mblarsen',
   mikeal: 'https://www.patreon.com/mikeal',
   mmckegg: 'https://www.patreon.com/MattMcKegg',
   moox: 'https://liberapay.com/MoOx/',
