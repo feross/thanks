@@ -31,7 +31,6 @@ const authors = {
   marijn: 'https://www.patreon.com/marijn',
   mikeal: 'https://www.patreon.com/mikeal',
   mmckegg: 'https://www.patreon.com/MattMcKegg',
-  mntnr: 'https://opencollective.com/maintainer',
   moox: 'https://liberapay.com/MoOx/',
   mpj: 'https://www.patreon.com/funfunfunction',
   mrahmadawais: 'https://pay.paddle.com/checkout/515568',
