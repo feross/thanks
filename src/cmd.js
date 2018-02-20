@@ -114,7 +114,11 @@ async function runThanks (cwd, promptToOpen) {
   spinner.text = chalk`Reading {cyan dependencies} from package tree in {magenta node_modules}...`
   const rootPath = await pkgDir(cwd)
   const packageTree = await readPackageTreeAsync(rootPath)
-  const pkgNames = packageTree.children.map(node => node.package.name)
+  const pkgNames = packageTree.children
+    .map(node => node.package.name)
+    // Filter out folders without a package.json in node_modules
+    // See: https://github.com/feross/thanks/issues/72
+    .filter(Boolean)
 
   if (pkgNames.length === 0) {
     spinner.fail(chalk`{red No packages} found in the {magenta node_modules} folder. Try running {cyan npm install} first, silly! 😆`)
