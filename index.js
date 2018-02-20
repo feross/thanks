@@ -11,11 +11,13 @@ const authors = {
   antony: 'https://www.patreon.com/wirah',
   armaldio: 'https://www.paypal.me/armaldio',
   bevacqua: 'https://www.patreon.com/bevacqua',
+  chinchang: 'https://www.patreon.com/kushagra',
   dannyfritz: 'https://www.patreon.com/dannyfritz',
   diegohaz: 'https://www.patreon.com/diegohaz',
   feross: 'https://www.patreon.com/feross',
   getify: 'https://www.patreon.com/getify',
   gr2m: 'https://railsgirlssummerofcode.org/campaign/',
+  hacdias: 'https://www.patreon.com/hacdias',
   hueniverse: 'https://www.patreon.com/eranhammer',
   hughsk: 'https://hughsk.io/donate/',
   jaredhanson: 'https://www.patreon.com/jaredhanson',
@@ -51,9 +53,7 @@ const authors = {
   tomchentw: 'https://www.patreon.com/tomchentw',
   typicode: 'https://www.patreon.com/typicode',
   yoshuawuyts: 'https://www.patreon.com/yoshuawuyts',
-  yyx990803: 'https://www.patreon.com/evanyou',
-  hacdias: 'https://www.patreon.com/hacdias',
-  chinchang: 'https://www.patreon.com/kushagra'
+  yyx990803: 'https://www.patreon.com/evanyou'
 }
 
 /*
