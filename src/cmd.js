@@ -202,7 +202,7 @@ function createRegistryClient () {
 }
 
 function isScopedPkg (pkgName) {
-  return pkgName.includes('/')
+  return pkgName && pkgName.includes('/')
 }
 
 async function fetchPkgs (client, pkgNames) {
