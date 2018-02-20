@@ -52,7 +52,8 @@ const authors = {
   typicode: 'https://www.patreon.com/typicode',
   yoshuawuyts: 'https://www.patreon.com/yoshuawuyts',
   yyx990803: 'https://www.patreon.com/evanyou',
-  hacdias: 'https://www.patreon.com/hacdias'
+  hacdias: 'https://www.patreon.com/hacdias',
+  chinchang: 'https://www.patreon.com/kushagra'
 }
 
 /*
