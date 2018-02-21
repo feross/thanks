@@ -123,6 +123,7 @@ const packages = {
   'ConfigurableMapViewerCMV': 'https://opencollective.com/cmv-app',
   'cypress': 'https://opencollective.com/cypressio',
   'd3-node-editor': 'https://opencollective.com/d3-node-editor',
+  'darcyclarke': 'https://www.patreon.com/darcyclarke',
   'dat': 'https://opencollective.com/dat',
   'DataServices': 'https://opencollective.com/cloudboost',
   'date-fns': 'https://opencollective.com/date-fns',
