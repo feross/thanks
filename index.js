@@ -16,6 +16,7 @@ const authors = {
   darcyclarke: 'https://www.patreon.com/darcyclarke',
   diegohaz: 'https://www.patreon.com/diegohaz',
   feross: 'https://www.patreon.com/feross',
+  fvcproductions: 'https://www.patreon.com/fvcproductions',
   getify: 'https://www.patreon.com/getify',
   gr2m: 'https://railsgirlssummerofcode.org/campaign/',
   hacdias: 'https://www.patreon.com/hacdias',
