@@ -44,6 +44,7 @@ const authors = {
   paulcbetts: 'https://www.patreon.com/paulcbetts',
   posva: 'https://www.github.com/posva/donate',
   qubyte: 'https://www.paypal.me/qubyte',
+  rayzr: 'https://www.patreon.com/rayzr522',
   richardlitt: 'https://www.patreon.com/richlitt',
   riyadhalnur: 'https://www.paypal.me/riyadhalnur',
   rstoenescu: 'https://www.patreon.com/quasarframework',
