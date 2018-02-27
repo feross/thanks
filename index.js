@@ -14,6 +14,7 @@ const authors = {
   chinchang: 'https://www.patreon.com/kushagra',
   dannyfritz: 'https://www.patreon.com/dannyfritz',
   darcyclarke: 'https://www.patreon.com/darcyclarke',
+  derhuerst: 'https://www.patreon.com/derhuerst',
   diegohaz: 'https://www.patreon.com/diegohaz',
   feross: 'https://www.patreon.com/feross',
   getify: 'https://www.patreon.com/getify',
