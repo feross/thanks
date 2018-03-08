@@ -53,6 +53,7 @@ const authors = {
   shama: 'https://www.patreon.com/shama',
   sindresorhus: 'https://www.patreon.com/sindresorhus',
   steelbrain: 'https://www.patreon.com/steelbrain',
+  softwaretailoring: 'https://www.paypal.me/softwaretailoring',
   thlorenz: 'https://www.patreon.com/thlorenz',
   tomchentw: 'https://www.patreon.com/tomchentw',
   typicode: 'https://www.patreon.com/typicode',
