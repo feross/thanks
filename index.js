@@ -70,16 +70,6 @@ const authors = {
 const packages = {
   '30-seconds-of-code': 'https://opencollective.com/30-seconds-of-code',
   '@colmena/colmena': 'https://opencollective.com/colmena',
-  '@compodoc/compodoc': 'https://opencollective.com/compodoc',
-  '@cycle/dom': 'https://opencollective.com/cyclejs',
-  '@cycle/history': 'https://opencollective.com/cyclejs',
-  '@cycle/html': 'https://opencollective.com/cyclejs',
-  '@cycle/http': 'https://opencollective.com/cyclejs',
-  '@cycle/isolate': 'https://opencollective.com/cyclejs',
-  '@cycle/most-run': 'https://opencollective.com/cyclejs',
-  '@cycle/run': 'https://opencollective.com/cyclejs',
-  '@cycle/rxjs-run': 'https://opencollective.com/cyclejs',
-  '@cycle/time': 'https://opencollective.com/cyclejs',
   '@feathersjs/feathers': 'https://opencollective.com/feathers',
   '@jscad/openjscad': 'https://opencollective.com/openjscad',
   '@ngrx/platform': 'https://opencollective.com/ngrx',
@@ -330,4 +320,10 @@ const packages = {
   'yo': 'https://opencollective.com/yeoman'
 }
 
-module.exports = { authors, packages }
+const organizations = {
+  turf: 'https://opencollective.com/turf',
+  cycle: 'https://opencollective.com/cyclejs',
+  compodoc: 'https://opencollective.com/compodoc'
+}
+
+module.exports = { authors, packages, organizations }
