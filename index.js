@@ -20,6 +20,7 @@ const authors = {
   getify: 'https://www.patreon.com/getify',
   gr2m: 'https://railsgirlssummerofcode.org/campaign/',
   hacdias: 'https://www.patreon.com/hacdias',
+  henryzhu: 'https://www.patreon.com/henryzhu',
   hueniverse: 'https://www.patreon.com/eranhammer',
   hughsk: 'https://hughsk.io/donate/',
   jaredhanson: 'https://www.patreon.com/jaredhanson',
