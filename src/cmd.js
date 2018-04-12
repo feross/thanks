@@ -145,7 +145,7 @@ async function runThanks (cwd, promptToOpen) {
   // Author name -> list of packages (sorted by direct dependencies, then download count)
   const authorsPkgNames = computeAuthorsPkgNames(pkgs, pkgDownloads, directPkgNames)
 
-  // Author name -> list of packages (sorted by direct dependencies, then download count)
+  // Org name -> list of packages (sorted by direct dependencies, then download count)
   const orgsPkgNames = computeOrgPkgNames(pkgs, pkgDownloads, directPkgNames)
 
   // Array of author names who are seeking donations (sorted by download count)
@@ -161,7 +161,7 @@ async function runThanks (cwd, promptToOpen) {
   // Array of organization names who are seeking donations (sorted by download count)
   const orgsSeeking = Object.keys(orgsPkgNames)
     .filter(org => thanks.organizations[org] != null)
-    .sort((org1, org2) => orgsPkgNames[org1].length - orgsPkgNames[org1].length)
+    .sort((org1, org2) => orgsPkgNames[org2].length - orgsPkgNames[org1].length)
 
   const donateLinks = [].concat(
     authorsSeeking.map(author => thanks.authors[author]),
@@ -218,6 +218,10 @@ function isScopedPkg (pkgName) {
   return pkgName.includes('/')
 }
 
+function getScopedPkgOrg (pkgName) {
+  return pkgName.match(/@([^/]+)/)[1] || null
+}
+
 async function fetchPkgs (client, pkgNames) {
   const pkgs = await Promise.all(pkgNames.map(fetchPkg))
 
@@ -248,7 +252,7 @@ async function fetchPkgs (client, pkgNames) {
   }
 }
 
-function printTable (authorsSeeking, pkgNamesSeeking, orgNamesSeeking, authorsPkgNames, orgsPkgNames, directPkgNames) {
+function printTable (authorsSeeking, pkgNamesSeeking, orgsSeeking, authorsPkgNames, orgsPkgNames, directPkgNames) {
   // Highlight direct dependencies in a different color
   function maybeHighlightPkgName (pkgName) {
     return directPkgNames.includes(pkgName)
@@ -277,7 +281,7 @@ function printTable (authorsSeeking, pkgNamesSeeking, orgNamesSeeking, authorsPk
       ]
     })
 
-  const orgRows = orgNamesSeeking
+  const orgRows = orgsSeeking
     .map(org => {
       const orgPkgNames = orgsPkgNames[org].map(maybeHighlightPkgName)
       const donateLink = prettyUrl(thanks.organizations[org])
@@ -400,7 +404,7 @@ function computeOrgPkgNames (pkgs, pkgDownloads, directPkgNames) {
 
   pkgs.forEach(pkg => {
     if (isScopedPkg(pkg.name)) {
-      const org = pkg.name.match(/@([^/]+)/)[1]
+      const org = getScopedPkgOrg(pkg.name)
       if (!orgPkgNames[org]) {
         orgPkgNames[org] = []
       }
