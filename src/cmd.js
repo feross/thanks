@@ -100,6 +100,15 @@ function runVersion () {
   console.log(require('../package.json').version)
 }
 
+function englishJoin (...arr) {
+  arr = arr.filter(Boolean)
+  switch (arr.length) {
+    case 3: return `${arr[0]}, ${arr[1]}, and ${arr[2]}`
+    case 2: return `${arr[0]} and ${arr[1]}`
+    case 1: return `${arr[0]}`
+  }
+}
+
 async function runThanks (cwd, promptToOpen) {
   spinner = ora({
     spinner: HEARTS_SPINNER,
@@ -136,35 +145,39 @@ async function runThanks (cwd, promptToOpen) {
   // Author name -> list of packages (sorted by direct dependencies, then download count)
   const authorsPkgNames = computeAuthorsPkgNames(pkgs, pkgDownloads, directPkgNames)
 
+  // Author name -> list of packages (sorted by direct dependencies, then download count)
+  const orgsPkgNames = computeOrgPkgNames(pkgs, pkgDownloads, directPkgNames)
+
   // Array of author names who are seeking donations (sorted by download count)
   const authorsSeeking = Object.keys(authorsPkgNames)
     .filter(author => thanks.authors[author] != null)
     .sort((author1, author2) => authorsPkgNames[author2].length - authorsPkgNames[author1].length)
 
-  // Array of package names that are seeking donations (sorted by download counte)
+  // Array of package names that are seeking donations (sorted by download count)
   const pkgNamesSeeking = pkgNames
     .filter(pkgName => thanks.packages[pkgName] != null)
     .sort((pkg1, pkg2) => pkgDownloads[pkg2] - pkgDownloads[pkg1])
 
+  // Array of organization names who are seeking donations (sorted by download count)
+  const orgsSeeking = Object.keys(orgsPkgNames)
+    .filter(org => thanks.organizations[org] != null)
+    .sort((org1, org2) => orgsPkgNames[org1].length - orgsPkgNames[org1].length)
+
   const donateLinks = [].concat(
     authorsSeeking.map(author => thanks.authors[author]),
-    pkgNamesSeeking.map(pkgName => thanks.packages[pkgName])
+    pkgNamesSeeking.map(pkgName => thanks.packages[pkgName]),
+    orgsSeeking.map(org => thanks.organizations[org])
   )
 
-  const authorStr = chalk.cyan(`${authorsSeeking.length} authors`)
-  const pkgNamesStr = chalk.cyan(`${pkgNamesSeeking.length} teams`)
+  const authorStr = authorsSeeking.length && chalk.cyan(`${authorsSeeking.length} authors`)
+  const pkgNamesStr = pkgNamesSeeking.length && chalk.cyan(`${pkgNamesSeeking.length} teams`)
+  const orgNamesStr = orgsSeeking.length && chalk.cyan(`${orgsSeeking.length} organizations`)
 
-  if (authorsSeeking.length > 0 && pkgNamesSeeking.length > 0) {
+  const listCounts = englishJoin(authorStr, pkgNamesStr, orgNamesStr)
+
+  if (listCounts) {
     spinner.succeed(
-      chalk`You depend on ${authorStr} and ${pkgNamesStr} who are {magenta seeking donations!} ✨\n`
-    )
-  } else if (authorsSeeking.length > 0) {
-    spinner.succeed(
-      chalk`You depend on ${authorStr} who are {magenta seeking donations!} ✨\n`
-    )
-  } else if (pkgNamesSeeking.length > 0) {
-    spinner.succeed(
-      chalk`You depend on ${pkgNamesStr} who are {magenta seeking donations!} ✨\n`
+      chalk`You depend on ${listCounts} who are {magenta seeking donations!} ✨\n`
     )
   } else {
     spinner.succeed(
@@ -172,8 +185,8 @@ async function runThanks (cwd, promptToOpen) {
     )
   }
 
-  if (authorsSeeking.length > 0 || pkgNamesSeeking.length > 0) {
-    printTable(authorsSeeking, pkgNamesSeeking, authorsPkgNames, directPkgNames)
+  if (authorsSeeking.length > 0 || pkgNamesSeeking.length > 0 || orgsSeeking.length > 0) {
+    printTable(authorsSeeking, pkgNamesSeeking, orgsSeeking, authorsPkgNames, orgsPkgNames, directPkgNames)
   }
 
   if (donateLinks.length && promptToOpen) {
@@ -235,7 +248,7 @@ async function fetchPkgs (client, pkgNames) {
   }
 }
 
-function printTable (authorsSeeking, pkgNamesSeeking, authorsPkgNames, directPkgNames) {
+function printTable (authorsSeeking, pkgNamesSeeking, orgNamesSeeking, authorsPkgNames, orgsPkgNames, directPkgNames) {
   // Highlight direct dependencies in a different color
   function maybeHighlightPkgName (pkgName) {
     return directPkgNames.includes(pkgName)
@@ -264,12 +277,24 @@ function printTable (authorsSeeking, pkgNamesSeeking, authorsPkgNames, directPkg
       ]
     })
 
+  const orgRows = orgNamesSeeking
+    .map(org => {
+      const orgPkgNames = orgsPkgNames[org].map(maybeHighlightPkgName)
+      const donateLink = prettyUrl(thanks.organizations[org])
+      return [
+        `${org} (organization)`,
+        chalk.cyan(donateLink),
+        listWithMaxLen(orgPkgNames, termSize().columns - 50)
+      ]
+    })
+
   const rows = [[
     chalk.underline('Author'),
     chalk.underline('Where to Donate'),
     chalk.underline('Dependencies')
   ]].concat(
     authorRows,
+    orgRows,
     packageRows
   )
 
@@ -367,6 +392,38 @@ function computeAuthorsPkgNames (pkgs, pkgDownloads, directPkgNames) {
   })
 
   return authorPkgNames
+}
+
+function computeOrgPkgNames (pkgs, pkgDownloads, directPkgNames) {
+  // org -> array of package names
+  const orgPkgNames = {}
+
+  pkgs.forEach(pkg => {
+    if (isScopedPkg(pkg.name)) {
+      const org = pkg.name.match(/@([^/]+)/)[1]
+      if (!orgPkgNames[org]) {
+        orgPkgNames[org] = []
+      }
+      orgPkgNames[org].push(pkg.name)
+    }
+  })
+
+  // Sort each org's package list by direct dependencies, then download count
+  // dependencies first in the list
+  Object.keys(orgPkgNames).forEach(org => {
+    const orgDirectPkgNames = orgPkgNames[org]
+      .filter(pkgName => directPkgNames.includes(pkgName))
+
+    const pkgNames = orgPkgNames[org]
+      .filter(pkgName => !orgDirectPkgNames.includes(pkgName))
+      .sort((pkg1, pkg2) => pkgDownloads[pkg2] - pkgDownloads[pkg1])
+
+    pkgNames.unshift(...orgDirectPkgNames)
+
+    orgPkgNames[org] = pkgNames
+  })
+
+  return orgPkgNames
 }
 
 function listWithMaxLen (list, maxLen) {
