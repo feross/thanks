@@ -64,10 +64,26 @@ const authors = {
 }
 
 /*
+ * npm organization name -> donate page
+ *
+ * Whenever a `thanks` user has a packages from one of these organizations in their
+ * package tree, they will be prompted to donate.
+ */
+const organizations = {
+  babel: 'https://opencollective.com/babel',
+  compodoc: 'https://opencollective.com/compodoc',
+  cycle: 'https://opencollective.com/cyclejs',
+  turf: 'https://opencollective.com/turf'
+}
+
+/*
  * npm package name -> donate page
  *
  * Whenever a `thanks` user has one these exact packages in their package tree,
  * they will be prompted to donate.
+ *
+ * NOTE: If you have an npm organization, specify it above (see the `organizations`
+ * variable above!). This gives maximum coverage versus listing each package below.
  */
 const packages = {
   '30-seconds-of-code': 'https://opencollective.com/30-seconds-of-code',
@@ -93,8 +109,6 @@ const packages = {
   'awesome-mac': 'https://opencollective.com/awesome-mac',
   'ax5ui-kernel': 'https://opencollective.com/ax5ui-kernel',
   'axboot': 'https://opencollective.com/ax-boot-framework',
-  'babel': 'https://opencollective.com/babel',
-  'babel-core': 'https://opencollective.com/babel',
   'beakerbrowser': 'https://opencollective.com/beaker',
   'boost': 'https://opencollective.com/boostnoteio',
   'bootstrap-table': 'https://opencollective.com/bootstrap-table',
@@ -322,10 +336,4 @@ const packages = {
   'yo': 'https://opencollective.com/yeoman'
 }
 
-const organizations = {
-  turf: 'https://opencollective.com/turf',
-  cycle: 'https://opencollective.com/cyclejs',
-  compodoc: 'https://opencollective.com/compodoc'
-}
-
-module.exports = { authors, packages, organizations }
+module.exports = { authors, organizations, packages }
