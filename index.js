@@ -22,6 +22,7 @@ const authors = {
   hacdias: 'https://www.patreon.com/hacdias',
   hueniverse: 'https://www.patreon.com/eranhammer',
   hughsk: 'https://hughsk.io/donate/',
+  hzoo: 'https://www.patreon.com/henryzhu',
   jaredhanson: 'https://www.patreon.com/jaredhanson',
   jayphelps: 'https://www.patreon.com/jayphelps',
   johnjleider: 'https://www.patreon.com/vuetify',
