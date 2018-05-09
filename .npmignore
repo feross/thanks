@@ -1,1 +1,4 @@
+.babelrc
+.travis.yml
 img/
+src/
