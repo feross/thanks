@@ -45,6 +45,7 @@ const authors = {
   noffle: 'https://en.liberapay.com/noffle/',
   nzakas: 'https://www.paypal.me/nczonline',
   olstenlarck: 'https://www.paypal.me/tunnckoCore',
+  ovhemert: 'https://www.patreon.com/ovhemert',
   paulcbetts: 'https://www.patreon.com/paulcbetts',
   posva: 'https://www.github.com/posva/donate',
   qubyte: 'https://www.paypal.me/qubyte',
