@@ -34,6 +34,7 @@ const authors = {
   limonte: 'https://www.patreon.com/limonte',
   loghorn: 'https://paypal.me/Loghorn',
   mafintosh: 'https://www.patreon.com/mafintosh',
+  maoberlehner: 'https://paypal.me/maoberlehner',
   marijn: 'https://www.patreon.com/marijn',
   mblarsen: 'https://flattr.com/@mblarsen',
   mmckegg: 'https://www.patreon.com/MattMcKegg',
