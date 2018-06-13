@@ -62,7 +62,8 @@ const authors = {
   typicode: 'https://www.patreon.com/typicode',
   yoshuawuyts: 'https://www.patreon.com/yoshuawuyts',
   yyx990803: 'https://www.patreon.com/evanyou',
-  zeke: 'http://zeke.sikelianos.com/donations'
+  zeke: 'http://zeke.sikelianos.com/donations',
+  sergeylukin: 'https://paypal.me/smartcoding',
 }
 
 /*
