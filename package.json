@@ -20,7 +20,7 @@
     "opn": "^5.2.0",
     "ora": "^3.0.0",
     "pify": "^3.0.0",
-    "pkg-dir": "^2.0.0",
+    "pkg-dir": "^3.0.0",
     "pkg-up": "^2.0.0",
     "prompt-confirm": "^2.0.4",
     "read-package-tree": "^5.1.6",
