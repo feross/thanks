@@ -63,7 +63,7 @@ const authors = {
   yoshuawuyts: 'https://www.patreon.com/yoshuawuyts',
   yyx990803: 'https://www.patreon.com/evanyou',
   zeke: 'http://zeke.sikelianos.com/donations',
-  sergeylukin: 'https://paypal.me/smartcoding',
+  sergeylukin: 'https://paypal.me/smartcoding'
 }
 
 /*
