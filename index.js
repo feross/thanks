@@ -33,6 +33,7 @@ const authors = {
   kgryte: 'https://www.patreon.com/athan',
   korynunn: 'https://www.patreon.com/korynunn',
   limonte: 'https://www.patreon.com/limonte',
+  litomore: 'https://paypal.me/LitoMore',
   loghorn: 'https://paypal.me/Loghorn',
   mafintosh: 'https://www.patreon.com/mafintosh',
   maoberlehner: 'https://paypal.me/maoberlehner',
