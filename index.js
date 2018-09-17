@@ -47,6 +47,7 @@ const authors = {
   mpj: 'https://www.patreon.com/funfunfunction',
   mrahmadawais: 'https://pay.paddle.com/checkout/515568',
   mweststrate: 'https://www.paypal.me/michelweststrate',
+  nathfreder: 'https://www.paypal.me/nathfreder',
   noffle: 'https://en.liberapay.com/noffle/',
   nzakas: 'https://www.paypal.me/nczonline',
   olstenlarck: 'https://www.paypal.me/tunnckoCore',
