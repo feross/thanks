@@ -59,6 +59,7 @@ const authors = {
   riyadhalnur: 'https://www.paypal.me/riyadhalnur',
   rstoenescu: 'https://www.patreon.com/quasarframework',
   shama: 'https://www.patreon.com/shama',
+  shellscape: 'https://www.patreon.com/shellscape',
   sindresorhus: 'https://www.patreon.com/sindresorhus',
   steelbrain: 'https://www.patreon.com/steelbrain',
   softwaretailoring: 'https://www.paypal.me/softwaretailoring',
