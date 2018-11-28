@@ -30,6 +30,7 @@ const authors = {
   hzoo: 'https://www.patreon.com/henryzhu',
   jaredhanson: 'https://www.patreon.com/jaredhanson',
   jayphelps: 'https://www.patreon.com/jayphelps',
+  'johann-s': 'https://www.patreon.com/jservoire',
   johnjleider: 'https://www.patreon.com/vuetify',
   jpcote: 'https://beerpay.io/cotejp',
   juliangruber: 'https://www.patreon.com/juliangruber',
