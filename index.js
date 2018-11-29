@@ -87,12 +87,47 @@ const authors = {
  * package tree, they will be prompted to donate.
  */
 const organizations = {
+  accounts: 'https://opencollective.com/accounts-js',
   babel: 'https://opencollective.com/babel',
+  barba: 'https://opencollective.com/barbajs',
+  bevry: 'https://opencollective.com/bevry',
+  canner: 'https://opencollective.com/cannercms',
+  colmena: 'https://opencollective.com/colmena',
   compodoc: 'https://opencollective.com/compodoc',
   cycle: 'https://opencollective.com/cyclejs',
+  emotion: 'https://opencollective.com/emotion',
+  feathersjs: 'https://opencollective.com/feathers',
+  hoodie: 'https://opencollective.com/hoodie',
+  jest: 'https://opencollective.com/jest',
+  jscad: 'https://opencollective.com/openjscad',
+  klingon: 'https://opencollective.com/klingon',
+  koa: 'https://opencollective.com/koajs',
+  'material-ui': 'https://opencollective.com/material-ui',
   'mdx-js': 'https://opencollective.com/unified',
+  midwayjs: 'https://opencollective.com/midway',
+  mocha: 'https://opencollective.com/mochajs',
+  nestjs: 'https://opencollective.com/nest',
+  ngrx: 'https://opencollective.com/ngrx',
+  nivo: 'https://opencollective.com/nivo',
+  nuxt: 'https://opencollective.com/nuxtjs',
+  octolinker: 'https://opencollective.com/octolinker',
+  phenomic: 'https://opencollective.com/phenomic',
+  popmotion: 'https://opencollective.com/popmotion',
+  popperjs: 'https://opencollective.com/popperjs',
+  prettier: 'https://opencollective.com/prettier',
+  qxip: 'https://bunq.me/qxip',
+  'react-native-firebase': 'https://opencollective.com/react-native-firebase',
+  'react-pdf': 'https://opencollective.com/react-pdf',
+  'redux-saga': 'https://opencollective.com/redux-saga',
+  searchkit: 'https://opencollective.com/searchkit',
+  sindresorhus: 'https://opencollective.com/sindresorhus',
+  storybook: 'https://opencollective.com/storybook',
+  svgr: 'https://opencollective.com/svgr',
+  tarojs: 'https://opencollective.com/taro',
   turf: 'https://opencollective.com/turf',
-  qxip: 'https://bunq.me/qxip'
+  'ui-grid': 'https://opencollective.com/ui-grid',
+  warriorjs: 'https://opencollective.com/warriorjs',
+  'webpack-cli': 'https://opencollective.com/webpack'
 }
 
 /*
