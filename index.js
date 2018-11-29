@@ -16,6 +16,7 @@ const authors = {
   bevry: 'https://bevry.me/donate',
   bevryme: 'https://bevry.me/donate',
   chinchang: 'https://www.patreon.com/kushagra',
+  cipchk: 'https://www.patreon.com/cipchk',
   dannyfritz: 'https://www.patreon.com/dannyfritz',
   darcyclarke: 'https://www.patreon.com/darcyclarke',
   derhuerst: 'https://www.patreon.com/derhuerst',
