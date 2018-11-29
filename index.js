@@ -305,6 +305,7 @@ const packages = {
   'socket.io': 'https://opencollective.com/socketio',
   'speedtracker': 'https://opencollective.com/speedtracker',
   'split.js': 'https://opencollective.com/splitjs',
+  'strapi': 'https://opencollective.com/strapi',
   'streetmix': 'https://opencollective.com/streetmix',
   'strider': 'https://opencollective.com/strider',
   'styled-components': 'https://opencollective.com/styled-components',
