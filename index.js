@@ -100,6 +100,7 @@ const packages = {
   '@jscad/openjscad': 'https://opencollective.com/openjscad',
   '@ngrx/platform': 'https://opencollective.com/ngrx',
   '@reactivex/rxjs': 'https://opencollective.com/rxjs',
+  '@react-pdf/renderer': 'https://opencollective.com/react-pdf',
   '@storybook/root': 'https://opencollective.com/storybook',
   'acgn-stock': 'https://opencollective.com/acgn-stock',
   'altair': 'https://opencollective.com/altair',
