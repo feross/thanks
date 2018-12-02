@@ -21,6 +21,7 @@ const authors = {
   derhuerst: 'https://www.patreon.com/derhuerst',
   diegohaz: 'https://www.patreon.com/diegohaz',
   evantahler: 'https://www.paypal.me/evantahler',
+  fabiosantoscode: 'https://www.patreon.com/fabiosantoscode',
   feross: 'https://www.patreon.com/feross',
   getify: 'https://www.patreon.com/getify',
   gr2m: 'https://railsgirlssummerofcode.org/campaign/',
