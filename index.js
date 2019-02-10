@@ -37,6 +37,7 @@ const authors = {
   korynunn: 'https://www.patreon.com/korynunn',
   limonte: 'https://www.patreon.com/limonte',
   litomore: 'https://paypal.me/LitoMore',
+  lmangani: 'https://bunq.me/qxip',
   loghorn: 'https://paypal.me/Loghorn',
   mafintosh: 'https://www.patreon.com/mafintosh',
   maoberlehner: 'https://paypal.me/maoberlehner',
@@ -81,7 +82,8 @@ const organizations = {
   babel: 'https://opencollective.com/babel',
   compodoc: 'https://opencollective.com/compodoc',
   cycle: 'https://opencollective.com/cyclejs',
-  turf: 'https://opencollective.com/turf'
+  turf: 'https://opencollective.com/turf',
+  qxip: 'https://bunq.me/qxip'
 }
 
 /*
