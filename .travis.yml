@@ -1,3 +1,9 @@
 language: node_js
 node_js:
   - lts/*
+install:
+  - npm install
+  - gem install awesome_bot
+script:
+  - npm test
+  - awesome_bot index.js --skip-save-results
