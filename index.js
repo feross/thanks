@@ -38,6 +38,7 @@ const authors = {
   limonte: 'https://www.patreon.com/limonte',
   litomore: 'https://paypal.me/LitoMore',
   loghorn: 'https://paypal.me/Loghorn',
+  lukechilds: 'https://blockchair.com/bitcoin/address/1LukeQU5jwebXbMLDVydeH4vFSobRV9rkj',
   mafintosh: 'https://www.patreon.com/mafintosh',
   maoberlehner: 'https://paypal.me/maoberlehner',
   marijn: 'https://www.patreon.com/marijn',
