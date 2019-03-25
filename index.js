@@ -310,7 +310,7 @@ const packages = {
   'Sizzy': 'https://opencollective.com/sizzy',
   'skatejs-monorepo': 'https://opencollective.com/skatejs',
   'sketchpad': 'https://opencollective.com/sketchpad',
-  'slim-js': 'https://opencollective.com/slimjs',
+  'slim-js': 'https://www.patreon.com/slimjs',
   'socket.io': 'https://opencollective.com/socketio',
   'speedtracker': 'https://opencollective.com/speedtracker',
   'split.js': 'https://opencollective.com/splitjs',
