@@ -54,7 +54,7 @@ const authors = {
   olstenlarck: 'https://www.paypal.me/tunnckoCore',
   ovhemert: 'https://www.patreon.com/ovhemert',
   paulcbetts: 'https://www.patreon.com/paulcbetts',
-  posva: 'https://github.com/posva/donate',
+  posva: 'https://github.com/posva/thanks',
   qubyte: 'https://www.paypal.me/qubyte',
   rayzr: 'https://www.patreon.com/rayzr522',
   richardlitt: 'https://www.patreon.com/richlitt',
