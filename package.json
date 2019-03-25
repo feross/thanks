@@ -25,7 +25,7 @@
     "prompt-confirm": "^2.0.4",
     "read-package-tree": "^5.1.6",
     "registry-auth-token": "^3.3.2",
-    "registry-url": "^4.0.0",
+    "registry-url": "^5.0.0",
     "strip-ansi": "^5.0.0",
     "term-size": "^1.2.0",
     "text-table": "^0.2.0"
