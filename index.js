@@ -21,6 +21,7 @@ const authors = {
   derhuerst: 'https://www.patreon.com/derhuerst',
   diegohaz: 'https://www.patreon.com/diegohaz',
   evantahler: 'https://www.paypal.me/evantahler',
+  fabiosantoscode: 'https://www.patreon.com/fabiosantoscode',
   feross: 'https://www.patreon.com/feross',
   getify: 'https://www.patreon.com/getify',
   gr2m: 'https://railsgirlssummerofcode.org/campaign/',
@@ -37,6 +38,8 @@ const authors = {
   korynunn: 'https://www.patreon.com/korynunn',
   litomore: 'https://www.paypal.me/LitoMore',
   loghorn: 'https://www.paypal.me/Loghorn',
+  lmangani: 'https://bunq.me/qxip',
+  lukechilds: 'https://blockchair.com/bitcoin/address/1LukeQU5jwebXbMLDVydeH4vFSobRV9rkj',
   mafintosh: 'https://www.patreon.com/mafintosh',
   maoberlehner: 'https://www.paypal.me/maoberlehner',
   marijn: 'https://www.patreon.com/marijn',
@@ -59,6 +62,7 @@ const authors = {
   rstoenescu: 'https://www.patreon.com/quasarframework',
   shama: 'https://www.patreon.com/shama',
   sindresorhus: 'https://www.patreon.com/sindresorhus',
+  staltz: 'https://www.patreon.com/andrestaltz',
   steelbrain: 'https://www.patreon.com/steelbrain',
   softwaretailoring: 'https://www.paypal.me/softwaretailoring',
   thlorenz: 'https://www.patreon.com/thlorenz',
@@ -80,7 +84,8 @@ const organizations = {
   babel: 'https://opencollective.com/babel',
   compodoc: 'https://opencollective.com/compodoc',
   cycle: 'https://opencollective.com/cyclejs',
-  turf: 'https://opencollective.com/turf'
+  turf: 'https://opencollective.com/turf',
+  qxip: 'https://bunq.me/qxip'
 }
 
 /*
