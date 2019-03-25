@@ -38,19 +38,18 @@ const authors = {
   juliangruber: 'https://www.patreon.com/juliangruber',
   kgryte: 'https://www.patreon.com/athan',
   korynunn: 'https://www.patreon.com/korynunn',
-  limonte: 'https://www.patreon.com/limonte',
-  litomore: 'https://paypal.me/LitoMore',
+  litomore: 'https://www.paypal.me/LitoMore',
+  loghorn: 'https://www.paypal.me/Loghorn',
   lmangani: 'https://bunq.me/qxip',
-  loghorn: 'https://paypal.me/Loghorn',
   lukechilds: 'https://blockchair.com/bitcoin/address/1LukeQU5jwebXbMLDVydeH4vFSobRV9rkj',
   mafintosh: 'https://www.patreon.com/mafintosh',
-  maoberlehner: 'https://paypal.me/maoberlehner',
+  maoberlehner: 'https://www.paypal.me/maoberlehner',
   marijn: 'https://www.patreon.com/marijn',
   mblarsen: 'https://flattr.com/@mblarsen',
   mmckegg: 'https://www.patreon.com/MattMcKegg',
   moox: 'https://liberapay.com/MoOx/',
   mpj: 'https://www.patreon.com/funfunfunction',
-  mrahmadawais: 'https://pay.paddle.com/checkout/515568',
+  mrahmadawais: 'https://buy.paddle.com/product/515568',
   mweststrate: 'https://www.paypal.me/michelweststrate',
   noffle: 'https://en.liberapay.com/noffle/',
   nzakas: 'https://www.paypal.me/nczonline',
@@ -58,7 +57,7 @@ const authors = {
   ovhemert: 'https://www.patreon.com/ovhemert',
   panva: 'https://www.patreon.com/panva',
   paulcbetts: 'https://www.patreon.com/paulcbetts',
-  posva: 'https://www.github.com/posva/donate',
+  posva: 'https://github.com/posva/thanks',
   qubyte: 'https://www.paypal.me/qubyte',
   rayzr: 'https://www.patreon.com/rayzr522',
   richardlitt: 'https://www.patreon.com/richlitt',
@@ -74,8 +73,8 @@ const authors = {
   typicode: 'https://www.patreon.com/typicode',
   yoshuawuyts: 'https://www.patreon.com/yoshuawuyts',
   yyx990803: 'https://www.patreon.com/evanyou',
-  zeke: 'http://zeke.sikelianos.com/donations',
-  sergeylukin: 'https://paypal.me/smartcoding'
+  zeke: 'http://zeke.sikelianos.com/donations/',
+  sergeylukin: 'https://www.paypal.me/smartcoding'
 }
 
 /*
