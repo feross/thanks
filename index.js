@@ -129,6 +129,7 @@ const packages = {
   'axboot': 'https://opencollective.com/ax-boot-framework',
   'beakerbrowser': 'https://opencollective.com/beaker',
   'boost': 'https://opencollective.com/boostnoteio',
+  'bootstrap-ie8': 'https://www.paypal.me/coliff',
   'bootstrap-table': 'https://opencollective.com/bootstrap-table',
   'bootstrap-vue': 'https://opencollective.com/bootstrap-vue',
   'bower': 'https://opencollective.com/bower',
