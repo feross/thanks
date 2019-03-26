@@ -34,7 +34,7 @@
     "standard": "*"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "keywords": [
     "donate",

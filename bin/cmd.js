@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const chalk = require('chalk')
-const got = require('got') // TODO: use simple-peer when it supports promises
+const got = require('got') // TODO: use simple-get when it supports promises
 const minimist = require('minimist')
 const opn = require('opn')
 const ora = require('ora')
