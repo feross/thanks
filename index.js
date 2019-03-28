@@ -58,7 +58,7 @@ const authors = {
   ovhemert: 'https://www.patreon.com/ovhemert',
   panva: 'https://www.patreon.com/panva',
   paulcbetts: 'https://www.patreon.com/paulcbetts',
-  pablopunk: 'https://paypal.me/pablopunk',
+  pablopunk: 'https://www.paypal.me/pablopunk',
   posva: 'https://github.com/posva/thanks',
   qubyte: 'https://www.paypal.me/qubyte',
   rayzr: 'https://www.patreon.com/rayzr522',
