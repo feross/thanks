@@ -489,5 +489,5 @@ async function readDirectPkgNames () {
 function printInstructions () {
   const url = 'https://github.com/feross/thanks/blob/master/index.js'
   const message = chalk`If you're an open source author who accepts donations, add yourself to the {bold.magenta thanks} CLI by modifying this file( {cyan ${url} }), and sending a pull request!`
-  console.log('\n'+ message + '\n')
+  console.log('\n' + message + '\n')
 }
