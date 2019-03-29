@@ -189,6 +189,8 @@ async function runThanks (cwd, promptToOpen) {
     printTable(authorsSeeking, pkgNamesSeeking, orgsSeeking, authorsPkgNames, orgsPkgNames, directPkgNames)
   }
 
+  printInstructions()
+
   if (donateLinks.length && promptToOpen) {
     const prompt = new PromptConfirm(
       chalk`Want to open these {cyan donate pages} in your {magenta web browser}? 🦄`
@@ -482,4 +484,10 @@ async function readDirectPkgNames () {
       ? Object.keys(pkg[type])
       : []
   }
+}
+
+function printInstructions () {
+  const url = 'https://github.com/feross/thanks/blob/master/index.js'
+  const message = chalk`If you're an open source author who accepts donations, add yourself to the {bold.magenta thanks} CLI by modifying this file( {cyan ${url} }), and sending a pull request!`
+  console.log('\n'+ message + '\n')
 }
