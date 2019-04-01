@@ -3,7 +3,7 @@
 const chalk = require('chalk')
 const got = require('got') // TODO: use simple-get when it supports promises
 const minimist = require('minimist')
-const opn = require('opn')
+const open = require('open')
 const ora = require('ora')
 const pify = require('pify')
 const pkgDir = require('pkg-dir')
@@ -449,7 +449,7 @@ function listWithMaxLen (list, maxLen) {
 
 async function openDonateLinks (donateLinks) {
   for (let donateLink of donateLinks) {
-    await opn(donateLink, { wait: false })
+    await open(donateLink)
   }
   console.log(chalk`\n{bold.yellow You are awesome!} 🌟`)
 }
