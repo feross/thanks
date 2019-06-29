@@ -23,7 +23,7 @@
     "pkg-dir": "^4.0.0",
     "pkg-up": "^3.0.1",
     "prompt-confirm": "^2.0.4",
-    "read-package-tree": "^5.1.6",
+    "read-package-tree": "^5.3.1",
     "registry-auth-token": "^3.3.2",
     "registry-url": "^5.0.0",
     "strip-ansi": "^5.0.0",
