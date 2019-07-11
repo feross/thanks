@@ -45,7 +45,6 @@ const authors = {
   loghorn: 'https://www.paypal.me/Loghorn',
   lmangani: 'https://bunq.me/qxip',
   lukechilds: 'https://blockchair.com/bitcoin/address/1LukeQU5jwebXbMLDVydeH4vFSobRV9rkj',
-  mafintosh: 'https://www.patreon.com/mafintosh',
   maoberlehner: 'https://www.paypal.me/maoberlehner',
   marijn: 'https://www.patreon.com/marijn',
   mblarsen: 'https://flattr.com/@mblarsen',
