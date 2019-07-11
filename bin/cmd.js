@@ -29,8 +29,8 @@ const DOWNLOADS_URL_LIMIT = 128
 const RE_URL_PREFIX = /https?:\/\/(www\.)?/
 const RE_TRAILING_SLASH = /\/$/
 const HEARTS_SPINNER = {
-  'interval': 100,
-  'frames': [
+  interval: 100,
+  frames: [
     '💛 ',
     '💙 ',
     '💜 ',
@@ -137,7 +137,7 @@ async function runThanks (cwd, promptToOpen) {
   // Get latest registry data on each local package, since the local data does
   // not include the list of maintainers
   spinner.text = chalk`Fetching package {cyan maintainers} from {red npm}...`
-  let pkgs = await fetchPkgs(client, pkgNames)
+  const pkgs = await fetchPkgs(client, pkgNames)
 
   spinner.text = chalk`Fetching package {cyan download counts} from {red npm}...`
   const pkgDownloads = await bulkFetchPkgDownloads(pkgNames)
@@ -448,7 +448,7 @@ function listWithMaxLen (list, maxLen) {
 }
 
 async function openDonateLinks (donateLinks) {
-  for (let donateLink of donateLinks) {
+  for (const donateLink of donateLinks) {
     await open(donateLink)
   }
   console.log(chalk`\n{bold.yellow You are awesome!} 🌟`)

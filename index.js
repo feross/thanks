@@ -1,3 +1,5 @@
+/* eslint-disable quote-props */
+
 /*
  * npm username -> donate page
  *
