@@ -6,4 +6,4 @@ install:
   - gem install awesome_bot
 script:
   - npm test
-  - awesome_bot index.js --allow-dupe --allow-redirect --skip-save-results
+  - awesome_bot index.js --allow-dupe --allow-redirect --skip-save-results --request-delay 1
