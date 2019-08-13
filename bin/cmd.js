@@ -234,7 +234,7 @@ async function fetchPkgs (client, pkgNames) {
   async function fetchPkg (pkgName) {
     // Note: The registry does not support fetching versions for scoped packages
     const url = isScopedPkg(pkgName)
-      ? `${registryUrl()}${pkgName.replace('/', '%2F')}`
+      ? `${registryUrl()}${pkgName.replace(/\//g, '%2F')}`
       : `${registryUrl()}${pkgName}/latest`
 
     const opts = {
