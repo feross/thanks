@@ -1,15 +1,18 @@
-# thanks [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url] [![javascript style guide][standard-image]][standard-url]
+<h1 align="center">
+  <br>
+  <a href="https://feross.org/thanks"><img src="https://cdn.rawgit.com/feross/thanks/master/img/thanks-logo.png" alt="Thanks" width="200"></a>
+  <br>
+</h1>
 
-[travis-image]: https://img.shields.io/travis/feross/thanks/master.svg
-[travis-url]: https://travis-ci.org/feross/thanks
-[npm-image]: https://img.shields.io/npm/v/thanks.svg
-[npm-url]: https://npmjs.org/package/thanks
-[downloads-image]: https://img.shields.io/npm/dm/thanks.svg
-[downloads-url]: https://npmjs.org/package/thanks
-[standard-image]: https://img.shields.io/badge/code_style-standard-brightgreen.svg
-[standard-url]: https://standardjs.com
+<h4 align="center">🙌 Give thanks to the open source maintainers you depend on! ✨</h4>
 
-### 🙌 Give thanks to the open source maintainers you depend on! ✨
+<p align="center">
+  <a href="https://travis-ci.org/feross/thanks"><img src="https://img.shields.io/travis/feross/thanks/master.svg" alt="travis"></a>
+  <a href="https://www.npmjs.com/package/thanks"><img src="https://img.shields.io/npm/v/thanks.svg" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/thanks"><img src="https://img.shields.io/npm/dm/thanks.svg" alt="npm downloads"></a>
+  <a href="https://standardjs.com"><img src="https://img.shields.io/badge/code_style-standard-brightgreen.svg" alt="Standard - JavaScript Style Guide"></a>
+</p>
+<br>
 
 ![example gif](img/example.gif)
 
