@@ -1,5 +1,5 @@
 <h1 align="center">
-  <a href="https://feross.org/thanks"><img src="img/vertical.png" alt="Thanks" width="200"></a>
+  <a href="https://feross.org/thanks"><img src="https://rawcdn.githack.com/feross/thanks/HEAD/img/vertical.png" alt="Thanks" width="200"></a>
   <br>
 </h1>
 
