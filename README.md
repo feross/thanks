@@ -1,8 +1,6 @@
- <p align="center"><img src="logo/vertical.png" alt="center" height="120px"></p>
-
 <h1 align="center">
   <br>
-  <a href="https://feross.org/thanks"><img src="https://cdn.rawgit.com/feross/thanks/master/img/thanks-logo.png" alt="Thanks" width="200"></a>
+  <a href="https://feross.org/thanks"><img src="img/vertical.png" alt="Thanks" width="200"></a>
   <br>
 </h1>
 
