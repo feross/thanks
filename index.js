@@ -28,6 +28,7 @@ const authors = {
   fabiosantoscode: 'https://www.patreon.com/fabiosantoscode',
   feross: 'https://www.patreon.com/feross',
   getify: 'https://www.patreon.com/getify',
+  ganofins: 'https://www.patreon.com/ganofins',
   gr2m: 'https://railsgirlssummerofcode.org/campaign/',
   hacdias: 'https://www.patreon.com/hacdias',
   hueniverse: 'https://www.patreon.com/eranhammer',
