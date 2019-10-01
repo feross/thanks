@@ -21,6 +21,7 @@ const authors = {
   cipchk: 'https://www.patreon.com/cipchk',
   dannyfritz: 'https://www.patreon.com/dannyfritz',
   darcyclarke: 'https://www.patreon.com/darcyclarke',
+  davidjbradshaw: 'https://www.paypal.me/davidjbradshaw',
   derhuerst: 'https://www.patreon.com/derhuerst',
   diegohaz: 'https://www.patreon.com/diegohaz',
   eli: 'https://go.eligrey.com/donate',
