@@ -449,7 +449,7 @@ function listWithMaxLen (list, maxLen) {
 
 async function openDonateLinks (donateLinks) {
   for (const donateLink of donateLinks) {
-    await open(donateLink)
+    await open(donateLink, { url: true })
   }
   console.log(chalk`\n{bold.yellow You are awesome!} 🌟`)
 }
