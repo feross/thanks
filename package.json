@@ -12,7 +12,7 @@
     "url": "https://github.com/feross/thanks/issues"
   },
   "dependencies": {
-    "chalk": "^2.3.0",
+    "chalk": "^3.0.0",
     "common-tags": "^1.7.2",
     "got": "^9.0.0",
     "minimist": "^1.2.0",
