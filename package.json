@@ -14,7 +14,7 @@
   "dependencies": {
     "chalk": "^2.3.0",
     "common-tags": "^1.7.2",
-    "got": "^9.0.0",
+    "got": "^10.0.0",
     "minimist": "^1.2.0",
     "npm-registry-client": "^8.5.0",
     "open": "^7.0.0",
