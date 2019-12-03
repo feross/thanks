@@ -56,6 +56,7 @@ const authors = {
   mpj: 'https://www.patreon.com/funfunfunction',
   mrahmadawais: 'https://buy.paddle.com/product/515568',
   mweststrate: 'https://www.paypal.me/michelweststrate',
+  nickkaramoff: 'https://www.patreon.com/NickKaramoff',
   noffle: 'https://en.liberapay.com/noffle/',
   nzakas: 'https://www.paypal.me/nczonline',
   olstenlarck: 'https://www.paypal.me/tunnckoCore',
