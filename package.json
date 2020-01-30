@@ -27,7 +27,7 @@
     "registry-auth-token": "^4.0.0",
     "registry-url": "^5.0.0",
     "strip-ansi": "^5.0.0",
-    "term-size": "^2.1.0",
+    "term-size": "^2.2.0",
     "text-table": "^0.2.0"
   },
   "devDependencies": {
