@@ -1,3 +1,4 @@
+/*! thanks. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 /* eslint-disable quote-props */
 
 /*
