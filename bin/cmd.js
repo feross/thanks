@@ -331,7 +331,7 @@ async function bulkFetchPkgDownloads (pkgNames) {
     const url = DOWNLOADS_URL + pkgNamesSubset.join(',')
     let res
     try {
-      res = await got(url, { json: true })
+      res = await got(url).json()
     } catch (err) {
       // If a single package is requested and does not exists, it will return a 404
       // error. Ignore the error.
@@ -351,7 +351,7 @@ async function bulkFetchPkgDownloads (pkgNames) {
     const url = DOWNLOADS_URL + scopedPkgName
     let res
     try {
-      res = await got(url, { json: true })
+      res = await got(url).json()
       pkgDownloads[scopedPkgName] = res.body.downloads
     } catch (err) {
       // If a single package is requested and does not exists, it will return a 404
