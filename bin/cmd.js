@@ -337,8 +337,8 @@ async function bulkFetchPkgDownloads (pkgNames) {
       // error. Ignore the error.
       continue
     }
-    Object.keys(res.body).forEach(pkgName => {
-      const stats = res.body[pkgName]
+    Object.keys(res).forEach(pkgName => {
+      const stats = res[pkgName]
       // If multiple packages are requested and some of them do not exist, those keys
       // will have a value of null. Skip those packages.
       if (stats) pkgDownloads[pkgName] = stats.downloads
@@ -352,7 +352,7 @@ async function bulkFetchPkgDownloads (pkgNames) {
     let res
     try {
       res = await got(url).json()
-      pkgDownloads[scopedPkgName] = res.body.downloads
+      pkgDownloads[scopedPkgName] = res.downloads
     } catch (err) {
       // If a single package is requested and does not exists, it will return a 404
       // error. Ignore the error.
