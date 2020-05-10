@@ -19,7 +19,7 @@
     "npm-registry-client": "^8.5.0",
     "open": "^7.0.0",
     "ora": "^4.0.0",
-    "pify": "^4.0.0",
+    "pify": "^5.0.0",
     "pkg-dir": "^4.0.0",
     "pkg-up": "^3.0.1",
     "prompt-confirm": "^2.0.4",
