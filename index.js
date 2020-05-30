@@ -67,6 +67,7 @@ const authors = {
   pablopunk: 'https://www.paypal.me/pablopunk',
   posva: 'https://github.com/posva/thanks',
   qubyte: 'https://www.paypal.me/qubyte',
+  rationalcoding: 'https://github.com/sponsors/t-mullen',
   rayzr: 'https://www.patreon.com/rayzr522',
   richardlitt: 'https://www.patreon.com/richlitt',
   riyadhalnur: 'https://www.paypal.me/riyadhalnur',
