@@ -25,6 +25,7 @@ const authors = {
   davidjbradshaw: 'https://www.paypal.me/davidjbradshaw',
   derhuerst: 'https://www.patreon.com/derhuerst',
   diegohaz: 'https://www.patreon.com/diegohaz',
+  dmonad: 'https://github.com/sponsors/dmonad',
   eli: 'https://go.eligrey.com/donate',
   evantahler: 'https://www.paypal.me/evantahler',
   fabiosantoscode: 'https://www.patreon.com/fabiosantoscode',
