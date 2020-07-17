@@ -301,6 +301,7 @@ const packages = {
   'nodedata': 'https://opencollective.com/node-data',
   'nodemailer': 'https://opencollective.com/nodemailer',
   'nodemon': 'https://opencollective.com/nodemon',
+  'node-fetch': 'https://opencollective.com/node-fetch',
   'nuxt': 'https://opencollective.com/nuxtjs',
   'nwitter': 'https://opencollective.com/node-twitter',
   'OctoLinker': 'https://opencollective.com/octolinker',
