@@ -86,7 +86,8 @@ const authors = {
   yoshuawuyts: 'https://www.patreon.com/yoshuawuyts',
   yyx990803: 'https://www.patreon.com/evanyou',
   zeke: 'http://zeke.sikelianos.com/donations/',
-  sergeylukin: 'https://www.paypal.me/smartcoding'
+  sergeylukin: 'https://www.paypal.me/smartcoding',
+  awakeneddeveloper: 'paypal.me/jigardprajapati'
 }
 
 /*
@@ -402,7 +403,8 @@ const packages = {
   'WireFlow': 'https://opencollective.com/wireflow',
   'WPGulp': 'https://opencollective.com/wpgulp',
   'xss-listener': 'https://opencollective.com/xss-listener',
-  'yo': 'https://opencollective.com/yeoman'
+  'yo': 'https://opencollective.com/yeoman',
+  'virtual360-react': 'paypal.me/jigardprajapati'
 }
 
 module.exports = { authors, organizations, packages }
