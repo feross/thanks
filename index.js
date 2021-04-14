@@ -87,7 +87,7 @@ const authors = {
   yyx990803: 'https://www.patreon.com/evanyou',
   zeke: 'http://zeke.sikelianos.com/donations/',
   sergeylukin: 'https://www.paypal.me/smartcoding',
-  awakeneddeveloper: 'paypal.me/jigardprajapati'
+  awakeneddeveloper: 'https://paypal.me/jigardprajapati'
 }
 
 /*
@@ -404,7 +404,7 @@ const packages = {
   'WPGulp': 'https://opencollective.com/wpgulp',
   'xss-listener': 'https://opencollective.com/xss-listener',
   'yo': 'https://opencollective.com/yeoman',
-  'virtual360-react': 'paypal.me/jigardprajapati'
+  'virtual360-react': 'https://paypal.me/jigardprajapati'
 }
 
 module.exports = { authors, organizations, packages }
