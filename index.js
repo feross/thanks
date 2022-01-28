@@ -9,6 +9,7 @@
  */
 const authors = {
   akepinski: 'https://www.patreon.com/akepinski',
+  amarcruz: 'https://paypal.me/amarcruz',
   amit_merchant: 'https://www.patreon.com/amitmerchant',
   andrewnez: 'https://en.liberapay.com/andrew/',
   anteriovieira: 'https://www.patreon.com/anteriovieira',
@@ -114,6 +115,7 @@ const organizations = {
   hyperapp: 'https://opencollective.com/hyperapp',
   jest: 'https://opencollective.com/jest',
   jitesoft: 'https://opencollective.com/jitesoft-open-source',
+  jsbits: 'https://paypal.me/amarcruz',
   jscad: 'https://opencollective.com/openjscad',
   klingon: 'https://opencollective.com/klingon',
   koa: 'https://opencollective.com/koajs',
