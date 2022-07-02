@@ -42,6 +42,7 @@ const authors = {
   jaredhanson: 'https://www.patreon.com/jaredhanson',
   jayphelps: 'https://www.patreon.com/jayphelps',
   'johann-s': 'https://www.patreon.com/jservoire',
+  jounqin: 'https://www.patreon.com/1stG',
   johnjleider: 'https://www.patreon.com/vuetify',
   jpcote: 'https://beerpay.io/cotejp',
   juliangruber: 'https://www.patreon.com/juliangruber',
@@ -96,6 +97,7 @@ const authors = {
  * package tree, they will be prompted to donate.
  */
 const organizations = {
+  '1stg': 'https://opencollective.com/1stg',
   '11ty': 'https://opencollective.com/11ty',
   accounts: 'https://opencollective.com/accounts-js',
   babel: 'https://opencollective.com/babel',
@@ -138,12 +140,14 @@ const organizations = {
   'react-native-firebase': 'https://opencollective.com/react-native-firebase',
   'react-pdf': 'https://opencollective.com/react-pdf',
   'redux-saga': 'https://opencollective.com/redux-saga',
+  rxts: 'https://opencollective.com/rxts',
   searchkit: 'https://opencollective.com/searchkit',
   sindresorhus: 'https://opencollective.com/sindresorhus',
   storybook: 'https://opencollective.com/storybook',
   svgr: 'https://opencollective.com/svgr',
   tarojs: 'https://opencollective.com/taro',
   turf: 'https://opencollective.com/turf',
+  unts: 'https://opencollective.com/unts',
   'ui-grid': 'https://opencollective.com/ui-grid',
   warriorjs: 'https://opencollective.com/warriorjs',
   'webpack-cli': 'https://opencollective.com/webpack'
