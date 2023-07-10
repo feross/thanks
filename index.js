@@ -33,7 +33,7 @@ const authors = {
   finwo: 'https://www.patreon.com/finwo',
   getify: 'https://www.patreon.com/getify',
   ganofins: 'https://www.patreon.com/ganofins',
-  gr2m: 'https://railsgirlssummerofcode.org/campaign/',
+  gr2m: 'https://github.com/sponsors/gr2m',
   hacdias: 'https://www.patreon.com/hacdias',
   hueniverse: 'https://www.patreon.com/eranhammer',
   hughsk: 'https://hughsk.io/donate/',
